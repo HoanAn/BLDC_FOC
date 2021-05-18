@@ -84,6 +84,7 @@ void TIM3_IRQHandler(){
 		if (Step >6) Step =1;
 	// if (Next_Step >6) Next_Step =1;
 		Next_Step=Step;
+		//test changing
 	}
 	///////////////////////////
 	/*

@@ -62,7 +62,7 @@ int	main(void)
     /* Clear DMA TC flag */
     DMA_ClearFlag(DMA1_FLAG_TC1);
 			
-		
+		//change detect
 		}
 	}
 	

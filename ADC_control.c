@@ -145,6 +145,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 	
 	}
 	return Next_step;
+	//add a new line
 }
 
 

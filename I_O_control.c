@@ -16,3 +16,12 @@
 void Turn_off_P5V_driver(void){
 	 GPIO_WriteBit(GPIOB,OVC_OUT_N,0);
  }
+void Toggle_PB9(void){
+	GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
+	GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
+}
+
+void Toggle_PB8(void){
+	GPIO_WriteBit(GPIOB,GPIO_Pin_8,1);
+	GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
+}

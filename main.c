@@ -48,7 +48,9 @@ int	main(void)
 		Motor_Startup(&Step,&Next_Step,&Start_up);			
 		TIM_Cmd(TIM3,ENABLE);
 	TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
-	}	
+	}
+		Start_up=0;
+		Step=1;	
 		//---------------------------
 		//TIM_SetCompare1(TIM3,500);// -100 is calibration param || testing timer counting
 		

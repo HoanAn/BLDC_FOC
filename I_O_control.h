@@ -28,6 +28,9 @@
 void I_O_function_config(void);
 void Turn_on_P5V_driver(void);
 void Turn_off_P5V_driver(void);
+void Toggle_PB9(void);
+void Toggle_PB8(void);
+
 //////////////////////	 
 	 
 #ifdef __cplusplus

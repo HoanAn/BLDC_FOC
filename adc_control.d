@@ -35,3 +35,4 @@
 .\adc_control.o: stm32f0xx_it.h
 .\adc_control.o: main.h
 .\adc_control.o: PWM_control.h
+.\adc_control.o: I_O_control.h

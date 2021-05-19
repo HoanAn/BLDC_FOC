@@ -1,5 +1,6 @@
 #include "ADC_control.h"
 #include "PWM_control.h"
+#include "I_O_control.h"
 void ADC_Single_channel_start_conversion (ADC_TypeDef* ADCx, uint32_t ADC_Channel, uint16_t ADC_SampleTime){
 	
 	  uint32_t tmpreg = 0;
@@ -98,6 +99,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_C_Volt<Virtual_Ground_Volt) {
 				Next_step=2;
+				Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
@@ -106,6 +108,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_B_Volt>Virtual_Ground_Volt){
 				Next_step=3;
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 		  break;
@@ -114,6 +117,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_A_Volt<Virtual_Ground_Volt) {
 				Next_step=4;
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
@@ -122,6 +126,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_C_Volt>Virtual_Ground_Volt){
 				Next_step=5;
+			//	Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
@@ -130,6 +135,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_B_Volt<Virtual_Ground_Volt){
 				Next_step=6;
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
@@ -138,6 +144,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		{
 			if(Phase_A_Volt>Virtual_Ground_Volt){
 				Next_step=1;
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;

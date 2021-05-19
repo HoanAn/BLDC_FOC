@@ -8,10 +8,11 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 4222,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -87,24 +88,25 @@
 			[
 				{
 					"buffer": 0,
+					"file": "main.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 4222,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2224,
+								2224
 							]
 						],
 						"settings":
 						{
-							"default_dir": "C:\\Users\\Me\\AppData\\Roaming\\Sublime Text 3\\Packages\\User",
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

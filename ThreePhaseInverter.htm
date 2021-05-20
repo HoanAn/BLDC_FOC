@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\ThreePhaseInverter.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ThreePhaseInverter.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed May 19 11:24:32 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu May 20 12:39:33 2021
 <BR><P>
-<H3>Maximum Stack Usage =         64 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 TIM1_CC_IRQHandler &rArr; Back_Emf_detect &rArr; TIM3_action_at_BEMF_zero_crossing
 <P>
@@ -288,10 +288,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 298 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 266 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main &rArr; DMA_ADC_config &rArr; DMA_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Toggle_PB9
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_sample_config
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_Pin_Config
@@ -316,7 +317,7 @@ Global Symbols
 <P><STRONG><a name="[1b]"></a>TIM3_IRQHandler</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM3_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f0xx.o(RESET)
@@ -324,17 +325,16 @@ Global Symbols
 <P><STRONG><a name="[18]"></a>TIM1_BRK_UP_TRG_COM_IRQHandler</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM1_BRK_UP_TRG_COM_IRQHandler &rArr; TIM_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f0xx.o(RESET)
 </UL>
-<P><STRONG><a name="[19]"></a>TIM1_CC_IRQHandler</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM1_CC_IRQHandler &rArr; Back_Emf_detect &rArr; TIM3_action_at_BEMF_zero_crossing
+<P><STRONG><a name="[19]"></a>TIM1_CC_IRQHandler</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = TIM1_CC_IRQHandler &rArr; Back_Emf_detect &rArr; TIM3_action_at_BEMF_zero_crossing
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f0xx.o(RESET)
 </UL>
@@ -342,20 +342,20 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Timer1_PWM_config &rArr; TIM_OC4Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectOutputTrigger
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectMasterSlaveMode
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PreloadConfig
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CtrlPWMOutputs
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectOutputTrigger
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectMasterSlaveMode
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PreloadConfig
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CtrlPWMOutputs
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
@@ -365,9 +365,9 @@ Global Symbols
 <P><STRONG><a name="[42]"></a>Timer1_PWM_Pin_Config</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, pwm_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Timer1_PWM_Pin_Config &rArr; GPIO_PinAFConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -376,9 +376,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Timer3_sample_config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -387,28 +387,28 @@ Global Symbols
 <P><STRONG><a name="[3f]"></a>Sample_indicator_config</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, pwm_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Sample_indicator_config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>Commutation_six_tep</STRONG> (Thumb, 690 bytes, Stack size 8 bytes, pwm_control.o(.text))
+<P><STRONG><a name="[67]"></a>Commutation_six_tep</STRONG> (Thumb, 690 bytes, Stack size 8 bytes, pwm_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Commutation_six_tep &rArr; TIM_CCxNCmd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PolarityConfig
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3NPolarityConfig
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PolarityConfig
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2NPolarityConfig
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PolarityConfig
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1NPolarityConfig
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GenerateEvent
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC3Config
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC2Config
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC1Config
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxNCmd
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxCmd
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PolarityConfig
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3NPolarityConfig
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PolarityConfig
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2NPolarityConfig
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PolarityConfig
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1NPolarityConfig
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GenerateEvent
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC3Config
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC2Config
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ForcedOC1Config
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxNCmd
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxCmd
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Startup
@@ -417,20 +417,20 @@ Global Symbols
 <P><STRONG><a name="[4e]"></a>Motor_Startup</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, pwm_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Motor_Startup &rArr; Commutation_six_tep &rArr; TIM_CCxNCmd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[74]"></a>TIM3_action_at_BEMF_zero_crossing</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, pwm_control.o(.text))
+<P><STRONG><a name="[75]"></a>TIM3_action_at_BEMF_zero_crossing</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, pwm_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM3_action_at_BEMF_zero_crossing
 </UL>
-<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
+<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
 </UL>
 
 <P><STRONG><a name="[c7]"></a>ADC_Single_channel_start_conversion</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, adc_control.o(.text), UNUSED)
@@ -438,29 +438,28 @@ Global Symbols
 <P><STRONG><a name="[40]"></a>ADC_Common_config</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, adc_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = ADC_Common_config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_StructInit
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_StartOfConversion
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetFlagStatus
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetCalibrationFactor
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DeInit
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMARequestModeConfig
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMACmd
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Cmd
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ChannelConfig
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_StructInit
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_StartOfConversion
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetFlagStatus
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetCalibrationFactor
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DeInit
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMARequestModeConfig
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMACmd
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Cmd
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ChannelConfig
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[53]"></a>Back_Emf_detect</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, adc_control.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Back_Emf_detect &rArr; TIM3_action_at_BEMF_zero_crossing
+<P><STRONG><a name="[54]"></a>Back_Emf_detect</STRONG> (Thumb, 182 bytes, Stack size 40 bytes, adc_control.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Back_Emf_detect &rArr; TIM3_action_at_BEMF_zero_crossing
 </UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Toggle_PB9
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_CC_IRQHandler
 </UL>
@@ -471,7 +470,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -479,8 +478,8 @@ Global Symbols
 <P><STRONG><a name="[44]"></a>I_O_function_config</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, i_o_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = I_O_function_config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -493,12 +492,12 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
 
-<P><STRONG><a name="[81]"></a>Toggle_PB9</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, i_o_control.o(.text))
+<P><STRONG><a name="[51]"></a>Toggle_PB9</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, i_o_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Toggle_PB9
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[87]"></a>Toggle_PB8</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, i_o_control.o(.text), UNUSED)
@@ -509,7 +508,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[63]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f0xx_gpio.o(.text))
+<P><STRONG><a name="[64]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f0xx_gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_Pin_Config
@@ -540,15 +539,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Toggle_PB8
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn_off_P5V_driver
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn_on_P5V_driver
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Toggle_PB9
-<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_CC_IRQHandler
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Toggle_PB9
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[cf]"></a>GPIO_Write</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[64]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 68 bytes, Stack size 20 bytes, stm32f0xx_gpio.o(.text))
+<P><STRONG><a name="[65]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 68 bytes, Stack size 20 bytes, stm32f0xx_gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_PinAFConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_Pin_Config
@@ -622,7 +620,7 @@ Global Symbols
 
 <P><STRONG><a name="[eb]"></a>RCC_BackupResetCmd</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text), UNUSED)
 
-<P><STRONG><a name="[62]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
+<P><STRONG><a name="[63]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_Pin_Config
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sample_indicator_config
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I_O_function_config
@@ -630,12 +628,12 @@ Global Symbols
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[54]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
+<P><STRONG><a name="[55]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[65]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
+<P><STRONG><a name="[66]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_sample_config
 </UL>
 
@@ -645,7 +643,7 @@ Global Symbols
 
 <P><STRONG><a name="[8e]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DeInit
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DeInit
 </UL>
 
 <P><STRONG><a name="[8f]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_rcc.o(.text), UNUSED)
@@ -665,7 +663,7 @@ Global Symbols
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[55]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[56]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_sample_config
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
@@ -676,14 +674,14 @@ Global Symbols
 
 <P><STRONG><a name="[f2]"></a>TIM_CounterModeConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[76]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
+<P><STRONG><a name="[77]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
 </UL>
 
 <P><STRONG><a name="[f3]"></a>TIM_SetAutoreload</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[75]"></a>TIM_GetCounter</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
+<P><STRONG><a name="[76]"></a>TIM_GetCounter</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
 </UL>
 
 <P><STRONG><a name="[f4]"></a>TIM_GetPrescaler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
@@ -699,7 +697,7 @@ Global Symbols
 <P><STRONG><a name="[f9]"></a>TIM_SetClockDivision</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[4b]"></a>TIM_Cmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -708,29 +706,29 @@ Global Symbols
 
 <P><STRONG><a name="[fb]"></a>TIM_BDTRStructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[61]"></a>TIM_CtrlPWMOutputs</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[62]"></a>TIM_CtrlPWMOutputs</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[57]"></a>TIM_OC1Init</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[58]"></a>TIM_OC1Init</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC1Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[59]"></a>TIM_OC2Init</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5a]"></a>TIM_OC2Init</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC2Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[5b]"></a>TIM_OC3Init</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5c]"></a>TIM_OC3Init</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC3Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[5d]"></a>TIM_OC4Init</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5e]"></a>TIM_OC4Init</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC4Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
@@ -741,7 +739,7 @@ Global Symbols
 <P><STRONG><a name="[fd]"></a>TIM_SelectOCxM</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[48]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_action_at_BEMF_zero_crossing
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -757,35 +755,35 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[68]"></a>TIM_ForcedOC1Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[69]"></a>TIM_ForcedOC1Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[69]"></a>TIM_ForcedOC2Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[6a]"></a>TIM_ForcedOC2Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[6a]"></a>TIM_ForcedOC3Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[6b]"></a>TIM_ForcedOC3Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
 <P><STRONG><a name="[fe]"></a>TIM_ForcedOC4Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[ff]"></a>TIM_CCPreloadControl</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[58]"></a>TIM_OC1PreloadConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[59]"></a>TIM_OC1PreloadConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[5a]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5b]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[5c]"></a>TIM_OC3PreloadConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5d]"></a>TIM_OC3PreloadConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
-<P><STRONG><a name="[5e]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[5f]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
@@ -805,44 +803,44 @@ Global Symbols
 
 <P><STRONG><a name="[107]"></a>TIM_ClearOC4Ref</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[72]"></a>TIM_OC1PolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[73]"></a>TIM_OC1PolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[71]"></a>TIM_OC1NPolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[72]"></a>TIM_OC1NPolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[70]"></a>TIM_OC2PolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[71]"></a>TIM_OC2PolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[6f]"></a>TIM_OC2NPolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[70]"></a>TIM_OC2NPolarityConfig</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[6e]"></a>TIM_OC3PolarityConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[6f]"></a>TIM_OC3PolarityConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[6d]"></a>TIM_OC3NPolarityConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[6e]"></a>TIM_OC3NPolarityConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
 <P><STRONG><a name="[108]"></a>TIM_OC4PolarityConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[109]"></a>TIM_SelectOCREFClear</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[6b]"></a>TIM_CCxCmd</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[6c]"></a>TIM_CCxCmd</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_CCxCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
-<P><STRONG><a name="[6c]"></a>TIM_CCxNCmd</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[6d]"></a>TIM_CCxNCmd</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_CCxNCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
 <P><STRONG><a name="[10a]"></a>TIM_SelectCOM</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
@@ -894,27 +892,27 @@ Global Symbols
 <P><STRONG><a name="[10f]"></a>TIM_GetCapture4</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[4c]"></a>TIM_ITConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_sample_config
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>TIM_GenerateEvent</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<P><STRONG><a name="[74]"></a>TIM_GenerateEvent</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
 </UL>
 
 <P><STRONG><a name="[110]"></a>TIM_GetFlagStatus</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[111]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[52]"></a>TIM_GetITStatus</STRONG> (Thumb, 38 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[53]"></a>TIM_GetITStatus</STRONG> (Thumb, 38 bytes, Stack size 12 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_BRK_UP_TRG_COM_IRQHandler
 </UL>
 
-<P><STRONG><a name="[51]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[52]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_CC_IRQHandler
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_BRK_UP_TRG_COM_IRQHandler
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
@@ -956,13 +954,13 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRConfig
 </UL>
 
-<P><STRONG><a name="[60]"></a>TIM_SelectOutputTrigger</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[61]"></a>TIM_SelectOutputTrigger</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
 <P><STRONG><a name="[116]"></a>TIM_SelectSlaveMode</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[5f]"></a>TIM_SelectMasterSlaveMode</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
+<P><STRONG><a name="[60]"></a>TIM_SelectMasterSlaveMode</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f0xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
 
@@ -1026,7 +1024,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f0xx.o(RESET)
 </UL>
-<P><STRONG><a name="[56]"></a>NVIC_Init</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, stm32f0xx_misc.o(.text))
+<P><STRONG><a name="[57]"></a>NVIC_Init</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, stm32f0xx_misc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_sample_config
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_PWM_config
 </UL>
@@ -1035,7 +1033,7 @@ Global Symbols
 
 <P><STRONG><a name="[121]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, stm32f0xx_misc.o(.text), UNUSED)
 
-<P><STRONG><a name="[77]"></a>ADC_DeInit</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[78]"></a>ADC_DeInit</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_DeInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
@@ -1043,17 +1041,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[79]"></a>ADC_Init</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7a]"></a>ADC_Init</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[78]"></a>ADC_StructInit</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[79]"></a>ADC_StructInit</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[7e]"></a>ADC_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7f]"></a>ADC_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
@@ -1079,7 +1077,7 @@ Global Symbols
 
 <P><STRONG><a name="[12c]"></a>ADC_VbatCmd</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[7a]"></a>ADC_ChannelConfig</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7b]"></a>ADC_ChannelConfig</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_ChannelConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
@@ -1091,7 +1089,7 @@ Global Symbols
 
 <P><STRONG><a name="[12f]"></a>ADC_OverrunModeCmd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[7b]"></a>ADC_GetCalibrationFactor</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7c]"></a>ADC_GetCalibrationFactor</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = ADC_GetCalibrationFactor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
@@ -1099,23 +1097,23 @@ Global Symbols
 
 <P><STRONG><a name="[130]"></a>ADC_StopOfConversion</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[80]"></a>ADC_StartOfConversion</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[81]"></a>ADC_StartOfConversion</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
 <P><STRONG><a name="[131]"></a>ADC_GetConversionValue</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[7d]"></a>ADC_DMACmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7e]"></a>ADC_DMACmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
-<P><STRONG><a name="[7c]"></a>ADC_DMARequestModeConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[7d]"></a>ADC_DMARequestModeConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
 </UL>
 
 <P><STRONG><a name="[132]"></a>ADC_ITConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f0xx_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[7f]"></a>ADC_GetFlagStatus</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, stm32f0xx_adc.o(.text))
+<P><STRONG><a name="[80]"></a>ADC_GetFlagStatus</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, stm32f0xx_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = ADC_GetFlagStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Common_config
@@ -1219,11 +1217,11 @@ Global Symbols
 
 <P><STRONG><a name="[145]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[67]"></a>__ARM_common_switch8</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, pwm_control.o(i.__ARM_common_switch8))
+<P><STRONG><a name="[68]"></a>__ARM_common_switch8</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, pwm_control.o(i.__ARM_common_switch8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Commutation_six_tep
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Back_Emf_detect
 </UL>
 
 <P><STRONG><a name="[146]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)

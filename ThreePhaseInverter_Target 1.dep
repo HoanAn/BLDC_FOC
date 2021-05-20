@@ -32,7 +32,7 @@ I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x54808D11)
 I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_wwdg.h)(0x54808D10)
 I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x54808D10)
 F (D:\HOC TAP\HTDKN\ref\ST\en.stm32f0_stdperiph_lib\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templates\arm\startup_stm32f0xx.s)(0x54808D0E)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx--list .\startup_stm32f0xx.lst --xref -o .\startup_stm32f0xx.o --depend .\startup_stm32f0xx.d)
-F (.\main.c)(0x60A492EE)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x60A5F60B)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (stm32f0xx.h)(0x5D3AC5A3)
 I (D:\KeilC\ARM\CMSIS\Include\core_cm0.h)(0x532C05D2)
 I (D:\KeilC\ARM\ARMCC\include\stdint.h)(0x51C7D364)
@@ -67,10 +67,10 @@ I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x54808D10)
 I (PWM_control.h)(0x6085FBE0)
 I (stm32f0xx_it.h)(0x547D9644)
 I (main.h)(0x5D400D55)
-I (ADC_control.h)(0x6080E0C1)
+I (ADC_control.h)(0x60A5EE53)
 I (DMA_control.h)(0x5F894BCD)
 I (I_O_control.h)(0x60A48E79)
-F (.\PWM_control.c)(0x60A2616D)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\pwm_control.o --omf_browse .\pwm_control.crf --depend .\pwm_control.d)
+F (.\PWM_control.c)(0x60A4CE7B)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\pwm_control.o --omf_browse .\pwm_control.crf --depend .\pwm_control.d)
 I (PWM_control.h)(0x6085FBE0)
 I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_tim.h)(0x60854E8B)
 I (..\3phase_inverter\stm32f0xx.h)(0x5D3AC5A3)
@@ -104,8 +104,8 @@ I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_wwdg.h)(0x54808D10)
 I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x54808D10)
 I (stm32f0xx_it.h)(0x547D9644)
 I (main.h)(0x5D400D55)
-F (.\ADC_control.c)(0x60A490F5)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\adc_control.o --omf_browse .\adc_control.crf --depend .\adc_control.d)
-I (ADC_control.h)(0x6080E0C1)
+F (.\ADC_control.c)(0x60A5F60B)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\STM32F0xx_StdPeriph_Driver\inc -I..\3phase_inverter-I D:\KeilC\ARM\RV31\INC-I D:\KeilC\ARM\CMSIS\Include-I D:\KeilC\ARM\Inc\ST\STM32F0xx-DUSE_STDPERIPH_DRIVER -DSTM32F0xx -DHSE_VALUE="8000000" -DSTM32F030-o .\adc_control.o --omf_browse .\adc_control.crf --depend .\adc_control.d)
+I (ADC_control.h)(0x60A5EE53)
 I (.\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_tim.h)(0x60854E8B)
 I (..\3phase_inverter\stm32f0xx.h)(0x5D3AC5A3)
 I (D:\KeilC\ARM\CMSIS\Include\core_cm0.h)(0x532C05D2)

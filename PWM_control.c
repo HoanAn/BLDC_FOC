@@ -137,7 +137,7 @@ void Sample_indicator_config(){
 		GPIO_Init(GPIOA, &GPIO_OutInitStructure);
 		
 	}
-//six step is wrong now, must fix
+//six step is wrong now, must fix ->fixed
 void Commutation_six_tep(int Step){	
 switch(Step){//change state of PWM output corresponding to steps
 	  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);

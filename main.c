@@ -50,16 +50,21 @@ int	main(void)
 	TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
 	}
 		Start_up=0;
-		Step=1;	
+		Step=6;	
+	  Next_Step=6;
+	
+	
 		//---------------------------
 		//TIM_SetCompare1(TIM3,500);// -100 is calibration param || testing timer counting
 		
 		//using edge of OC4REF to trigger ADC conversion and automatically transfer data to array ADC_Data[8].
 		//still do not understand why I have to use -100 to calib. ADC conversion moment does not happen at center of PWM pulse.
 		while(1){
+		/*
 		Back_EMF_test=ADC_Data[0]*ADC_max_volt/0xFFF;
 		Back_EMF_test2=ADC_Data[V_Phase_A]*ADC_max_volt/0xFFF;
 		Back_EMF_test3=ADC_Data[Virtual_ground]*ADC_max_volt/0xFFF;	
+		*/
 		while((DMA_GetFlagStatus(DMA1_FLAG_TC1)) == RESET );    
     /* Clear DMA TC flag */
     DMA_ClearFlag(DMA1_FLAG_TC1);
@@ -67,6 +72,13 @@ int	main(void)
 		//change detect
     //change 2 files.
     //test with sublime pugin
+	//	/*
+			if(Step != Next_Step){
+			Step=Next_Step;
+			Toggle_PB9();
+			}
+	//*/		
+		
 		}
 	}
 	
@@ -134,11 +146,11 @@ TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 void TIM1_CC_IRQHandler(void){//line 7 PWM.c, connfig CCR interrupt only on channel 4.
 TIM_ClearITPendingBit(TIM1,TIM_IT_CC4);
 	
-	GPIO_WriteBit(GPIOB,GPIO_Pin_8,1);
-	Toggle = 1- Toggle;
-	GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
-	ADC_time_conversion_debug = TIM1->CNT;
-	Next_Step=Back_Emf_detect(ADC_Data[V_Phase_A], ADC_Data[V_Phase_B], ADC_Data[V_Phase_C], ADC_Data[Virtual_ground],ADC_Data[V_Bus],Step,Start_up);
+	//GPIO_WriteBit(GPIOB,GPIO_Pin_8,1);
+	//Toggle = 1- Toggle;
+	//GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
+	//ADC_time_conversion_debug = TIM1->CNT;
+	Next_Step=Back_Emf_detect(ADC_Data[V_Phase_A], ADC_Data[V_Phase_B], ADC_Data[V_Phase_C], ADC_Data[Virtual_ground],ADC_Data[V_Bus],Step,Start_up,Next_Step);
 	//last_period=TIM3_action_at_BEMF_zero_crossing();
 
 	}

@@ -1,0 +1,289 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.34.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: An Nguyen, HCMUT, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.34.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.34.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.4.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
+Dialog DLL:      TARMCM1.DLL V1.14.3.0
+ 
+<h2>Project:</h2>
+D:\An\BLDC_driver\bldc_driver\ThreePhaseInverter.uvproj
+Project File Date:  05/21/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+assembling startup_stm32f0xx.s...
+compiling system_stm32f0xx.c...
+core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+system_stm32f0xx.c: 5 warnings, 0 errors
+compiling DMA_control.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+DMA_control.h(26): warning:  #1295-D: Deprecated declaration DMA_ADC_config - give arg types
+  void DMA_ADC_config();
+DMA_control.h(34): warning:  #1-D: last line of file ends without a newline
+  #endif /*__DMA_CONTROL_H */
+DMA_control.c(23): warning:  #1-D: last line of file ends without a newline
+  }
+DMA_control.c: 8 warnings, 0 errors
+compiling I_O_control.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+I_O_control.h(40): warning:  #1-D: last line of file ends without a newline
+  #endif /*__I_O_CONTROL_H */
+I_O_control.c(14): warning:  #188-D: enumerated type mixed with another type
+  	 GPIO_WriteBit(GPIOB,OVC_OUT_N,1);
+I_O_control.c(17): warning:  #188-D: enumerated type mixed with another type
+  	 GPIO_WriteBit(GPIOB,OVC_OUT_N,0);
+I_O_control.c(20): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
+I_O_control.c(21): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
+I_O_control.c(25): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_8,1);
+I_O_control.c(26): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
+I_O_control.c(27): warning:  #1-D: last line of file ends without a newline
+  }
+I_O_control.c: 13 warnings, 0 errors
+compiling stm32f0xx_gpio.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.c: 5 warnings, 0 errors
+compiling PWM_control.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+PWM_control.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif /*__PWM_H */
+PWM_control.c(143): warning:  #111-D: statement is unreachable
+  	  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
+PWM_control.c(300): warning:  #9-D: nested comment is not allowed
+  	//*Step=1;
+PWM_control.c(319): warning:  #940-D: missing return statement at end of non-void function "Motor_Startup" 
+  }
+PWM_control.c: 9 warnings, 0 errors
+compiling main.c...
+core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+PWM_control.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif /*__PWM_H */
+ADC_control.h(37): warning:  #1295-D: Deprecated declaration ADC_Common_config - give arg types
+  void ADC_Common_config();
+ADC_control.h(47): warning:  #1-D: last line of file ends without a newline
+  #endif /*__ADC_CONTROL_H */
+DMA_control.h(26): warning:  #1295-D: Deprecated declaration DMA_ADC_config - give arg types
+  void DMA_ADC_config();
+DMA_control.h(34): warning:  #1-D: last line of file ends without a newline
+  #endif /*__DMA_CONTROL_H */
+I_O_control.h(40): warning:  #1-D: last line of file ends without a newline
+  #endif /*__I_O_CONTROL_H */
+main.c(44): warning:  #188-D: enumerated type mixed with another type
+  			GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
+main.c(46): warning:  #188-D: enumerated type mixed with another type
+  			GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
+main.c(82): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_2,P5V_driver);
+main.c(137): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_8,1);
+main.c(139): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
+main.c: 16 warnings, 0 errors
+compiling ADC_control.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+ADC_control.h(37): warning:  #1295-D: Deprecated declaration ADC_Common_config - give arg types
+  void ADC_Common_config();
+ADC_control.h(47): warning:  #1-D: last line of file ends without a newline
+  #endif /*__ADC_CONTROL_H */
+PWM_control.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif /*__PWM_H */
+I_O_control.h(40): warning:  #1-D: last line of file ends without a newline
+  #endif /*__I_O_CONTROL_H */
+ADC_control.c: 9 warnings, 0 errors
+compiling stm32f0xx_rcc.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.c: 5 warnings, 0 errors
+compiling stm32f0xx_i2c.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.c: 5 warnings, 0 errors
+compiling stm32f0xx_exti.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c: 5 warnings, 0 errors
+compiling stm32f0xx_it.c...
+core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+stm32f0xx_it.c: 5 warnings, 0 errors
+compiling stm32f0xx_tim.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.c: 5 warnings, 0 errors
+compiling stm32f0xx_syscfg.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.c: 5 warnings, 0 errors
+compiling stm32f0xx_misc.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.c: 5 warnings, 0 errors
+compiling stm32f0xx_adc.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.c: 5 warnings, 0 errors
+compiling stm32f0xx_dma.c...
+..\bldc_driver\core_cmInstr.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMINSTR_H */
+..\bldc_driver\core_cmFunc.h(86): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CORE_CMFUNC_H */
+..\bldc_driver\core_cm0.h(793): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CMSIS_GENERIC */
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+..\bldc_driver\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
+  //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
+STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=11144 RO-data=224 RW-data=88 ZI-data=1648  
+".\ThreePhaseInverter.axf" - 0 Error(s), 110 Warning(s).
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>

@@ -88,25 +88,28 @@ void ADC_Common_config(){
   ADC_StartOfConversion(ADC1);
 }
 
-int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Virtual_Ground_Volt, int DC_Bus, int Step,uint8_t Start_up){
+int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Virtual_Ground_Volt, int DC_Bus, int Step,uint8_t Start_up, int NextStep){
 	// compare zero crossing between phases and virtual ground point.
 	//should be read with pwm frequency.
 	//return data to indicate when commutation should be happend, with steps should be communicated.
 	uint8_t Next_step=Step;
+	static uint8_t times=0;
+	
 	switch(Step){
 		case 0: break;
 		case 1: //AH_BL
 		{
-			if(Phase_C_Volt<Virtual_Ground_Volt) {
+			if( (NextStep ==Step)  && (Phase_C_Volt<Virtual_Ground_Volt)) {
 				Next_step=2;
-				Toggle_PB9();
+				times=1;
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
 		case 2: //AH_CL
 		{
-			if(Phase_B_Volt>Virtual_Ground_Volt){
+			if((NextStep ==Step) && Phase_B_Volt>Virtual_Ground_Volt){
 				Next_step=3;
 				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
@@ -115,7 +118,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		}
 	 case 3: //BH_CL
 		{
-			if(Phase_A_Volt<Virtual_Ground_Volt) {
+			if((NextStep ==Step) && Phase_A_Volt<Virtual_Ground_Volt) {
 				Next_step=4;
 				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
@@ -124,16 +127,16 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		}
 		case 4: //AL_BH
 		{
-			if(Phase_C_Volt>Virtual_Ground_Volt){
+			if((NextStep ==Step) && Phase_C_Volt>Virtual_Ground_Volt){
 				Next_step=5;
-			//	Toggle_PB9();
+				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
 		case 5://AL_CH 
 		{
-			if(Phase_B_Volt<Virtual_Ground_Volt){
+			if((NextStep ==Step) && Phase_B_Volt<Virtual_Ground_Volt){
 				Next_step=6;
 				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
@@ -142,8 +145,9 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		}
 		case 6://BL_CH 
 		{
-			if(Phase_A_Volt>Virtual_Ground_Volt){
+			if((NextStep ==Step) && Phase_A_Volt>Virtual_Ground_Volt){
 				Next_step=1;
+				times=6;
 				//Toggle_PB9();
 				TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
@@ -151,6 +155,7 @@ int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vir
 		}
 	
 	}
+	
 	return Next_step;
 	//add a new line
 	//change 2 files

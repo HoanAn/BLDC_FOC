@@ -11,7 +11,7 @@
 			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 4274,
+				"buffer_size": 4388,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -20,7 +20,15 @@
 			"file": "ADC_control.c",
 			"settings":
 			{
-				"buffer_size": 4422,
+				"buffer_size": 4848,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "ThreePhaseInverter_Target 1.dep",
+			"settings":
+			{
+				"buffer_size": 37677,
 				"line_ending": "Windows"
 			}
 		}
@@ -91,7 +99,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -100,15 +108,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4274,
+						"buffer_size": 4388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1729,
-								1729
+								0,
+								0
 							]
 						],
 						"settings":
@@ -120,7 +128,7 @@
 						"translation.y": 756.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -129,15 +137,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4422,
+						"buffer_size": 4848,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4381,
-								4381
+								0,
+								0
 							]
 						],
 						"settings":
@@ -146,6 +154,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 1836.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ThreePhaseInverter_Target 1.dep",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 37677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 11710.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

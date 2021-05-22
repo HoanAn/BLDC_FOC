@@ -104,8 +104,8 @@ void Timer3_sample_config(void){
 		NVIC_InitTypeDef NVIC_Initial;
 		
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
-	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/60000)-1; //timer3_clock=60kHz 4 times with pwm freq;
-		TIM_TimeBaseInitial.TIM_Period =60-1;//first setting for motor startup, take 15 pulses (1ms vs 15kHz pwm) before changing to next step in startup phases
+	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/1000000)-1; //timer3_clock=60kHz 4 times with pwm freq;
+		TIM_TimeBaseInitial.TIM_Period =1000-1;//first setting for motor startup, take 15 pulses (1ms vs 15kHz pwm) before changing to next step in startup phases
 	  //just thinking about tuning this value 
 	  #ifdef PSEUDO_COMMUTATION	
 	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/1000)-1; //timer_clock=1kHz;
@@ -140,13 +140,7 @@ void Sample_indicator_config(){
 //six step is wrong now, must fix ->fixed
 void Commutation_six_tep(int Step){	
 switch(Step){//change state of PWM output corresponding to steps
-	  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
-	  TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
-		TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
-	  TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
-		TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
-	  TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);
-	
+	  	
 		case 1://ATop_BBottom.
 			{
 				//PWM1 : OC output active when TIM1_CNT<TIM1_CCR1 (counting up) and TIM1_CNT<TIM1_CCR1(counting down), inverse for TIM_OCMode_PWM2
@@ -154,25 +148,25 @@ switch(Step){//change state of PWM output corresponding to steps
 				// Explain: to makesure PWWM channel comeback to normal status after being configured in previous step. 
 				//WARNING!! Consider dead time
 				TIM_ForcedOC1Config(TIM1,TIM_OCMode_PWM1);
-				//TIM_ForcedOC2Config(TIM1,TIM_OCMode_PWM1);
 				TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);	
-				
 				TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_Active);
 				
-					
+				TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
+	      TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
 				TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 				TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);//should be Enable, test again.
 				
+				TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
 				TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);//active low config, which means CCx will be inactive -> high -> MOSFET B top will be low
 				TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);//MOSFET B bottom high.
 					
 //PWM output acitve low (configured in PWM.c) so, Inactive state will be high logic level, means lower power switch will be always on and connect to GND while upper switch is switching.				
-				
 				TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 				TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
 				TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 				TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
-				//TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_InActive);
+
 				break;
 			}
 
@@ -182,16 +176,19 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);
 					TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_Active);
 				
+				  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
 					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 							
 				  TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 				  TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);	
-				
-				  TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
+					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 				
-					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);					
+				  TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 					
 		
@@ -205,13 +202,16 @@ switch(Step){//change state of PWM output corresponding to steps
 				
 					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 				  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
-				
 					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 				
+				  TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 				
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);					
 					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 					
@@ -223,10 +223,14 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_ForcedOC2Config(TIM1,TIM_OCMode_PWM1);
 					TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_Active);
 				
-					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
+					TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 
-					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
+					TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 
 					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
@@ -241,7 +245,9 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);
 					TIM_ForcedOC3Config(TIM1,TIM_OCMode_PWM1);
 				
-					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
+					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
+				  TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 					//TIM_ForcedOC1Config(TIM1,TIM_ForcedAction_Active);
 				
@@ -250,6 +256,8 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 				
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
 					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 				break;
@@ -265,10 +273,13 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 				
+					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
-					//TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);
-				
+					
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
 					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 				break;

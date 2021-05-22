@@ -88,75 +88,72 @@ void ADC_Common_config(){
   ADC_StartOfConversion(ADC1);
 }
 
-int Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Virtual_Ground_Volt, int DC_Bus, int Step,uint8_t Start_up, int NextStep){
+void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Virtual_Ground_Volt, uint8_t* Next_Step, uint8_t Step,uint8_t Start_up, int* zero_cross_period){
 	// compare zero crossing between phases and virtual ground point.
 	//should be read with pwm frequency.
 	//return data to indicate when commutation should be happend, with steps should be communicated.
-	uint8_t Next_step=Step;
-	static uint8_t times=0;
+	//uint8_t Next_step=Step;
 	
 	switch(Step){
 		case 0: break;
 		case 1: //AH_BL
 		{
-			if( (NextStep ==Step)  && (Phase_C_Volt<Virtual_Ground_Volt)) {
-				Next_step=2;
-				times=1;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if( (*Next_Step==Step) && (Phase_C_Volt<Virtual_Ground_Volt)) {
+				*Next_Step=2;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
 		case 2: //AH_CL
 		{
-			if((NextStep ==Step) && Phase_B_Volt>Virtual_Ground_Volt){
-				Next_step=3;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if((*Next_Step==Step) && (Phase_B_Volt>Virtual_Ground_Volt)){
+				*Next_Step=3;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 		  break;
 		}
 	 case 3: //BH_CL
 		{
-			if((NextStep ==Step) && Phase_A_Volt<Virtual_Ground_Volt) {
-				Next_step=4;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if((*Next_Step==Step) &&(Phase_A_Volt<Virtual_Ground_Volt)) {
+				*Next_Step=4;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
-		case 4: //AL_BH
+		case 4: //BH-AL
 		{
-			if((NextStep ==Step) && Phase_C_Volt>Virtual_Ground_Volt){
-				Next_step=5;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if( (*Next_Step==Step) && (Phase_C_Volt>Virtual_Ground_Volt)){
+				*Next_Step=5;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
-		case 5://AL_CH 
+		case 5://CH_AL 
 		{
-			if((NextStep ==Step) && Phase_B_Volt<Virtual_Ground_Volt){
-				Next_step=6;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if( (*Next_Step==Step) && (Phase_B_Volt<Virtual_Ground_Volt)){
+				*Next_Step=6;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
-		case 6://BL_CH 
+		case 6://CH_BL 
 		{
-			if((NextStep ==Step) && Phase_A_Volt>Virtual_Ground_Volt){
-				Next_step=1;
-				times=6;
-				//Toggle_PB9();
-				TIM3_action_at_BEMF_zero_crossing(Start_up);
+			if( (*Next_Step==Step) && (Phase_A_Volt>Virtual_Ground_Volt)){
+				*Next_Step=1;
+				Toggle_PB9();
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
 	
 	}
 	
-	return Next_step;
+	
 	//add a new line
 	//change 2 files
 	//also test wwith new subline tool

@@ -15,7 +15,7 @@ int Button=0;
 uint8_t Toggle=0, P5V_driver=0;
 uint8_t Toggle_COM=0;
 uint8_t Step=0, Next_Step=0, Start_up=1, BEMF_at_startup=0;
-int last_period=0;
+int zero_cross_period=0;
 int	main(void)
 
 	{
@@ -35,20 +35,25 @@ int	main(void)
 		Timer3_sample_config();// Config timer for pseudo 6 step commutating   
 		//#endif
 		TIM_Cmd(TIM3,ENABLE);
+		
 		//------Motor Startup-------
 		while(BEMF_at_startup<6){
 		//TIM_Cmd(TIM3,DISABLE);
-	TIM_ITConfig(TIM3,TIM_IT_Update,DISABLE);
+		Motor_Startup(&Step,&Next_Step,&Start_up);			
+		TIM_Cmd(TIM3,ENABLE);
+		TIM_ITConfig(TIM3,TIM_IT_Update,DISABLE);
 		if(Next_Step - Step==0){}//waiting for response from TIM3 interrupt.This diffirence means zero crossing has been detected
 			else{
 			GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
 			BEMF_at_startup++;
 			GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
 	  }	
-		Motor_Startup(&Step,&Next_Step,&Start_up);			
+		
 		TIM_Cmd(TIM3,ENABLE);
-	TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
-	}
+		TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
+	 }
+		//-----------------------------------------
+		TIM_ITConfig(TIM3,TIM_IT_CC1,ENABLE);
 		Start_up=0;
 		Step=6;	
 	  Next_Step=6;
@@ -65,19 +70,10 @@ int	main(void)
 		Back_EMF_test2=ADC_Data[V_Phase_A]*ADC_max_volt/0xFFF;
 		Back_EMF_test3=ADC_Data[Virtual_ground]*ADC_max_volt/0xFFF;	
 		*/
+			
 		while((DMA_GetFlagStatus(DMA1_FLAG_TC1)) == RESET );    
     /* Clear DMA TC flag */
     DMA_ClearFlag(DMA1_FLAG_TC1);
-			
-		//change detect
-    //change 2 files.
-    //test with sublime pugin
-	//	/*
-			if(Step != Next_Step){
-			Step=Next_Step;
-			Toggle_PB9();
-			}
-	//*/		
 		
 		}
 	}
@@ -90,20 +86,20 @@ int	main(void)
 void TIM3_IRQHandler(){
 	//TIM_Cmd(TIM3,DISABLE);
 	//TIM_ITConfig(TIM1,TIM_IT_Update,DISABLE);
+	
 	P5V_driver=1;//-P5V_driver;
 	GPIO_WriteBit(GPIOB,GPIO_Pin_2,P5V_driver);
 	
 	//////for start up phase/////
 	if (Start_up ==1){
    Step++;
-	//Next_Step++;	
 		if (Step >6) Step =1;
-	// if (Next_Step >6) Next_Step =1;
 		Next_Step=Step;
-		//test changing
 	}
 	///////////////////////////
-	/*
+	
+	
+	
 	if(TIM_GetITStatus(TIM3, TIM_IT_CC1)){
 	//last_period=TIM3_action_at_BEMF_zero_crossing();// this line is just for test capture interrupt of timer 3 channel 1
 	//half of a step time expired.
@@ -111,18 +107,21 @@ void TIM3_IRQHandler(){
 	#ifndef PSEUDO_COMMUTATION
 			if(Step != Next_Step) {
 				Step=Next_Step;
+				Toggle_PB8();
 				Commutation_six_tep(Step);
 		}
 			#endif
 	}
+	
+	
+}
 	#ifdef PSEUDO_COMMUTATION
+if(TIM_GetITStatus(TIM3, TIM_IT_CC1)){
 	Step++;
 	if(Step>6) Step=1;
 	Commutation_six_tep(Step);
-	#endif		
 }
-	*/
-	
+	#endif		
 	//Generate event COM after configure PWM channel in above. Configuration parameter affected after this event happened.
 	//TIM_GenerateEvent(TIM1,TIM_EventSource_COM);//COM event is for communication between step.
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
@@ -150,7 +149,7 @@ TIM_ClearITPendingBit(TIM1,TIM_IT_CC4);
 	//Toggle = 1- Toggle;
 	//GPIO_WriteBit(GPIOB,GPIO_Pin_8,0);
 	//ADC_time_conversion_debug = TIM1->CNT;
-	Next_Step=Back_Emf_detect(ADC_Data[V_Phase_A], ADC_Data[V_Phase_B], ADC_Data[V_Phase_C], ADC_Data[Virtual_ground],ADC_Data[V_Bus],Step,Start_up,Next_Step);
+	Back_Emf_detect(ADC_Data[V_Phase_A], ADC_Data[V_Phase_B], ADC_Data[V_Phase_C], ADC_Data[Virtual_ground],&Next_Step,Step,Start_up,&zero_cross_period);
 	//last_period=TIM3_action_at_BEMF_zero_crossing();
 
 	}

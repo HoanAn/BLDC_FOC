@@ -32,11 +32,11 @@ DMA_control.h(34): warning:  #1-D: last line of file ends without a newline
   #endif /*__DMA_CONTROL_H */
 I_O_control.h(40): warning:  #1-D: last line of file ends without a newline
   #endif /*__I_O_CONTROL_H */
-main.c(44): warning:  #188-D: enumerated type mixed with another type
+main.c(47): warning:  #188-D: enumerated type mixed with another type
                         GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
-main.c(46): warning:  #188-D: enumerated type mixed with another type
+main.c(49): warning:  #188-D: enumerated type mixed with another type
                         GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
-main.c(94): warning:  #188-D: enumerated type mixed with another type
+main.c(91): warning:  #188-D: enumerated type mixed with another type
         GPIO_WriteBit(GPIOB,GPIO_Pin_2,P5V_driver);
 main.c: 11 warnings, 0 errors
 compiling PWM_control.c...
@@ -46,13 +46,11 @@ compiling PWM_control.c...
   //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
 PWM_control.h(39): warning:  #1-D: last line of file ends without a newline
   #endif /*__PWM_H */
-PWM_control.c(143): warning:  #111-D: statement is unreachable
-          TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
-PWM_control.c(300): warning:  #9-D: nested comment is not allowed
+PWM_control.c(311): warning:  #9-D: nested comment is not allowed
         //*Step=1;
-PWM_control.c(319): warning:  #940-D: missing return statement at end of non-void function "Motor_Startup"
+PWM_control.c(330): warning:  #940-D: missing return statement at end of non-void function "Motor_Startup"
   }
-PWM_control.c: 6 warnings, 0 errors
+PWM_control.c: 5 warnings, 0 errors
 compiling ADC_control.c...
 ..\3phase_inverter\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
   //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
@@ -66,9 +64,7 @@ PWM_control.h(39): warning:  #1-D: last line of file ends without a newline
   #endif /*__PWM_H */
 I_O_control.h(40): warning:  #1-D: last line of file ends without a newline
   #endif /*__I_O_CONTROL_H */
-ADC_control.c(96): warning:  #550-D: variable "times" was set but never used
-        static uint8_t times=0;
-ADC_control.c: 7 warnings, 0 errors
+ADC_control.c: 6 warnings, 0 errors
 compiling DMA_control.c...
 ..\3phase_inverter\stm32f0xx.h(5709): warning:  #1-D: last line of file ends without a newline
   //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
@@ -164,13 +160,20 @@ compiling stm32f0xx_dma.c...
   //************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****// 
 STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=11048 RO-data=224 RW-data=92 ZI-data=1652  
-".\ThreePhaseInverter.axf" - 0 Error(s), 61 Warning(s).
+Program Size: Code=11320 RO-data=224 RW-data=88 ZI-data=1648  
+".\ThreePhaseInverter.axf" - 0 Error(s), 59 Warning(s).
 Load "D:\\Motor\\3 phase motor\\3phase_inverter\\ThreePhaseInverter.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
-</pre>
-</body>
-</html>
-
+s).
+Load "D:\\Motor\\3 phase motor\\3phase_inverter\\ThreePhaseInverter.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+has been cancelled
+Load "D:\\Motor\\3 phase motor\\3phase_inverter\\ThreePhaseInverter.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Error: Target DLL has been cancelled. Debugger aborted !

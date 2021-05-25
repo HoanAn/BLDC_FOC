@@ -36,3 +36,4 @@
 .\main.o: ADC_control.h
 .\main.o: DMA_control.h
 .\main.o: I_O_control.h
+.\main.o: Communication.h

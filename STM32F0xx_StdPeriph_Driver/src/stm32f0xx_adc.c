@@ -930,7 +930,7 @@ uint16_t ADC_GetConversionValue(ADC_TypeDef* ADCx)
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
   */
-void ADC_DMACmd(ADC_TypeDef* ADCx, FunctionalState NewState)
+ void ADC_DMACmd(ADC_TypeDef* ADCx, FunctionalState NewState)
 {
   /* Check the parameters */
   assert_param(IS_ADC_ALL_PERIPH(ADCx));

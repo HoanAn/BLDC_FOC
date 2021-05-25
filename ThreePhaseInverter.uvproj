@@ -445,6 +445,11 @@
               <FileType>1</FileType>
               <FilePath>.\I_O_control.c</FilePath>
             </File>
+            <File>
+              <FileName>Communication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Communication.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -499,6 +504,11 @@
               <FileName>stm32f0xx_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.c</FilePath>
             </File>
           </Files>
         </Group>

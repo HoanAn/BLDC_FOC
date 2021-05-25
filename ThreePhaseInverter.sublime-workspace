@@ -8,27 +8,58 @@
 	"buffers":
 	[
 		{
-			"file": "main.c",
+			"file": "STM32F0xx_StdPeriph_Driver/src/stm32f0xx_dma.c",
 			"settings":
 			{
-				"buffer_size": 4388,
-				"encoding": "UTF-8",
+				"buffer_size": 46106,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "ADC_control.c",
+			"file": "STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dma.h",
 			"settings":
 			{
-				"buffer_size": 4848,
+				"buffer_size": 55883,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "ThreePhaseInverter_Target 1.dep",
+			"file": "/D/HOC TAP/HTDKN/PWM_Project/Uart.c",
 			"settings":
 			{
-				"buffer_size": 37677,
+				"buffer_size": 5164,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/main.c",
+			"settings":
+			{
+				"buffer_size": 10567,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/main.h",
+			"settings":
+			{
+				"buffer_size": 2334,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/HOC TAP/HTDKN/PWM_Project/main.c",
+			"settings":
+			{
+				"buffer_size": 8172,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/readme.txt",
+			"settings":
+			{
+				"buffer_size": 3916,
 				"line_ending": "Windows"
 			}
 		}
@@ -65,6 +96,14 @@
 	},
 	"file_history":
 	[
+		"/D/HOC TAP/HTDKN/PWM_Project/main.c",
+		"/D/HOC TAP/HTDKN/PWM_Project/Uart.c",
+		"/D/HOC TAP/HTDKN/PWM_Project/PID_control.c",
+		"/D/HOC TAP/HTDKN/PWM_Project/PWM.c",
+		"/D/Thesis/my_thesis/src/CMakeLists.txt",
+		"/D/Motor/3 phase motor/3phase_inverter/ThreePhaseInverter_Target 1.dep",
+		"/D/Motor/3 phase motor/3phase_inverter/ADC_control.c",
+		"/D/Motor/3 phase motor/3phase_inverter/main.c"
 	],
 	"find":
 	{
@@ -99,16 +138,16 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main.c",
+					"file": "STM32F0xx_StdPeriph_Driver/src/stm32f0xx_dma.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4388,
+						"buffer_size": 46106,
 						"regions":
 						{
 						},
@@ -122,22 +161,53 @@
 						"settings":
 						{
 							"syntax": "Packages/C++/C.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 756.0,
+						"translation.y": 1674.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "ADC_control.c",
+					"file": "STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dma.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4848,
+						"buffer_size": 55883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3051,
+								3051
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1134.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/HOC TAP/HTDKN/PWM_Project/Uart.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5164,
 						"regions":
 						{
 						},
@@ -150,22 +220,113 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C.sublime-syntax"
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1836.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "ThreePhaseInverter_Target 1.dep",
+					"buffer": 3,
+					"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/main.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37677,
+						"buffer_size": 10567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7565,
+								7565
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3132.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/main.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1501,
+								1501
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 288.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/HOC TAP/HTDKN/PWM_Project/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6625,
+								6625
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4174.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/Motor/3 phase motor/en.stm32f0_stdperiph_lib/STM32F0xx_StdPeriph_Lib_V1.5.0/Projects/STM32F0xx_StdPeriph_Examples/DMA/DMA_USARTTransfer/readme.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3916,
 						"regions":
 						{
 						},
@@ -178,13 +339,15 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 11710.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

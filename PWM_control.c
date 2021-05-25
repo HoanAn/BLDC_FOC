@@ -13,8 +13,8 @@ void Timer1_PWM_config(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE); 
 	////////////Config Basic Timer//////////////////
 	TIM_TimeBasePWMInitial.TIM_Prescaler=0;//
-	Frequency=30000;
-	TIM_TimeBasePWMInitial.TIM_Period=(SystemCoreClock/1/Frequency)-1;//PWM frequency=15kHz because of using center aligned mode
+	Frequency=40000;
+	TIM_TimeBasePWMInitial.TIM_Period=(SystemCoreClock/1/Frequency)-1;//PWM frequency=20kHz because of using center aligned mode
 	Period=TIM_TimeBasePWMInitial.TIM_Period;
 	TIM_TimeBasePWMInitial.TIM_CounterMode=TIM_CounterMode_CenterAligned2;//Center Aligned 1, interrupt flag is set when TIM1_CNT > TIM1_CCR1 (counting down, 2: counting up, 3: up and down)
 	TIM_TimeBasePWMInitial.TIM_ClockDivision=0;

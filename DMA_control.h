@@ -23,7 +23,8 @@
 /////Variable//////
  
 /////Function/////
-void DMA_ADC_config();
+void DMA_ADC_config(uint32_t Periph_Address, uint16_t* Mem_Address);
+void DMA_UART1_config(uint8_t* TX_buff, uint8_t* RX_buff);
 //////////////////////	 
 	 
 	 

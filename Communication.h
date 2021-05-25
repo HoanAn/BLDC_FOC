@@ -1,5 +1,5 @@
-#ifndef __I_O_CONTROL_H
-#define __I_O_CONTROL_H
+#ifndef __Communication_H
+#define __Communication_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -11,26 +11,20 @@
 #include "stm32f0xx_misc.h"
 #include "stm32f0xx_exti.h"
 #include "stm32f0xx_it.h"
-
+#include "stm32f0xx_usart.h"
 //////////////////////////
 
 ////Define///
-#define OVC_OUT_N GPIO_Pin_2 //PB2
-#define BRAKE			3 //PB3
 
-// need to devide to 0xFFF at calculating time.
 
 /////////////
 
 /////Variable//////
  
 /////Function/////
-void I_O_function_config(void);
-void Turn_on_P5V_driver(void);
-void Turn_off_P5V_driver(void);
-void Toggle_PB9(void);
-void Toggle_PB8(void);
-void Toggle_PB10(void);
+void UART1_Init(uint32_t Baudrate);
+void IntToStr6(int16_t u, uint8_t *y);
+void FloatToStr5(float u, uint8_t *y);
 
 //////////////////////	 
 	 
@@ -38,4 +32,4 @@ void Toggle_PB10(void);
 }
 #endif
 
-#endif /*__I_O_CONTROL_H */
+#endif /*__Communication_H */

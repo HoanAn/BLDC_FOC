@@ -15,6 +15,11 @@
 
 ////Define///
 #define Sample_period 1000 //1s
+#define Start_up_change_step 2000-1
+#define First_PWM_width 250
+#define TIM3_clock 1000000 //(kHz)
+#define TIM14_clock 1000 //(Hz)
+#define Sample_time 100 //(means 100ms for timer 14)	 
 //#define  PSEUDO_COMMUTATION
 /////////////
 
@@ -29,6 +34,7 @@ void Sample_indicator_config(void);
 void Commutation_six_tep(int Step);
 int Motor_Startup(uint8_t* Step, uint8_t* Next_Step, uint8_t* Start_up);
 int TIM3_action_at_BEMF_zero_crossing( uint8_t Start_up );
+void Timer14_sample_config(void);
 //////////////////////	 
 	 
 	 

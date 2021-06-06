@@ -93,7 +93,76 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 	//should be read with pwm frequency.
 	//return data to indicate when commutation should be happend, with steps should be communicated.
 	//uint8_t Next_step=Step;
+	static uint8_t Old_step=1;
 	
+	if(Start_up == 1 && (Step=Old_step)){
+	switch(Step){
+		case 0: break;
+		case 1: //AH_BL
+		{
+			if( (*Next_Step==Step) && (Phase_C_Volt<Virtual_Ground_Volt)) {
+				*Next_Step=2;
+				Old_step=2;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+			break;
+		}
+		case 2: //AH_CL
+		{
+			if((*Next_Step==Step) && (Phase_B_Volt>Virtual_Ground_Volt)){
+				*Next_Step=3;
+				Old_step=3;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+		  break;
+		}
+	 case 3: //BH_CL
+		{
+			if((*Next_Step==Step) &&(Phase_A_Volt<Virtual_Ground_Volt)) {
+				*Next_Step=4;
+				Old_step=4;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+			break;
+		}
+		case 4: //BH-AL
+		{
+			if( (*Next_Step==Step) && (Phase_C_Volt>Virtual_Ground_Volt)){
+				*Next_Step=5;
+				Old_step=5;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+			break;
+		}
+		case 5://CH_AL 
+		{
+			if( (*Next_Step==Step) && (Phase_B_Volt<Virtual_Ground_Volt)){
+				*Next_Step=6;
+				Old_step=6;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+			break;
+		}
+		case 6://CH_BL 
+		{
+			if( (*Next_Step==Step) && (Phase_A_Volt>Virtual_Ground_Volt)){
+				*Next_Step=1;
+				Old_step=1;
+				Toggle_PB9();
+				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+			}
+			break;
+		}
+	
+	}
+}
+//////////////////////////////////////////////////////////////////////////////////////////	
+	if(Start_up == 0){
 	switch(Step){
 		case 0: break;
 		case 1: //AH_BL
@@ -152,11 +221,58 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 		}
 	
 	}
-	
-	
-	//add a new line
-	//change 2 files
-	//also test wwith new subline tool
+	}
 }
+
+void Current_per_phase_calculate(uint16_t Current_Sense_A,uint16_t Current_Sense_B,uint16_t Current_Sense_C,int* Current_phase_A, int* Current_phase_B, int* Current_phase_C, uint8_t Step){
+	switch(Step){
+		case 0: break;
+		case 1: //AH_BL
+		{
+			*Current_phase_A=Current_Sense_B-2059;
+			*Current_phase_B=-Current_Sense_B+2059;
+			*Current_phase_C=0;
+			
+			break;
+		}
+		case 2: //AH_CL
+		{
+			*Current_phase_A=Current_Sense_C-2059;
+			*Current_phase_C=-Current_Sense_C+2059;
+			*Current_phase_B=0;
+		  break;
+		}
+	 case 3: //BH_CL
+		{
+			*Current_phase_B=Current_Sense_C-2059;
+			*Current_phase_C=-Current_Sense_C+2059;
+			*Current_phase_A=0;
+			break;
+		}
+		case 4: //BH-AL
+		{
+			*Current_phase_B=Current_Sense_A-2059;
+			*Current_phase_A=-Current_Sense_A+2059;
+			*Current_phase_C=0;
+			break;
+		}
+		case 5://CH_AL 
+		{
+			*Current_phase_C=Current_Sense_A-2059;
+			*Current_phase_A=-Current_Sense_A+2059;
+			*Current_phase_B=0;
+			break;
+		}
+		case 6://CH_BL 
+		{
+			*Current_phase_C=Current_Sense_B-2059;
+			*Current_phase_B=-Current_Sense_B+2059;
+			*Current_phase_A=0;
+			break;
+		}
+	
+	}
+}
+
 
 

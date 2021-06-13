@@ -59,7 +59,7 @@ void ADC_Common_config(){
   ADC_InitStructure.ADC_ScanDirection = ADC_ScanDirection_Upward;
   ADC_Init(ADC1, &ADC_InitStructure); 
   
-  /* Convert the ADC1 Channel 11 with 239.5 Cycles as sampling time */ 
+  /* Convert the ADC1 Channel 0->7 with 1.5 Cycles as sampling time */ 
 //#ifdef USE_STM320518_EVAL
   ADC_ChannelConfig(ADC1, ADC_Channel_0|ADC_Channel_1|ADC_Channel_2|ADC_Channel_3|ADC_Channel_4|ADC_Channel_5|ADC_Channel_6|ADC_Channel_7, ADC_SampleTime_1_5Cycles);
 //#else
@@ -94,8 +94,8 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 	//return data to indicate when commutation should be happend, with steps should be communicated.
 	//uint8_t Next_step=Step;
 	static uint8_t Old_step=1;
-	
-	if(Start_up == 1 && (Step=Old_step)){
+	Toggle_PB10();
+	if(Start_up > 0 && (Step=Old_step)){
 	switch(Step){
 		case 0: break;
 		case 1: //AH_BL
@@ -104,7 +104,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=2;
 				Old_step=2;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
@@ -114,7 +114,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=3;
 				Old_step=3;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 		  break;
 		}
@@ -124,7 +124,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=4;
 				Old_step=4;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
@@ -134,7 +134,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=5;
 				Old_step=5;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
@@ -144,7 +144,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=6;
 				Old_step=6;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}
@@ -154,7 +154,7 @@ void Back_Emf_detect(int Phase_A_Volt, int Phase_B_Volt, int Phase_C_Volt,int Vi
 				*Next_Step=1;
 				Old_step=1;
 				Toggle_PB9();
-				//*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
+				*zero_cross_period=TIM3_action_at_BEMF_zero_crossing(Start_up);
 			}
 			break;
 		}

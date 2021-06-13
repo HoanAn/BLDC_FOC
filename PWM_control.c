@@ -109,7 +109,7 @@ void Timer3_sample_config(void){
 		
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
 	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/TIM3_clock)-1; //timer3_clock=10kHz;
-		TIM_TimeBaseInitial.TIM_Period =Start_up_change_step;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
+		TIM_TimeBaseInitial.TIM_Period =50000-1;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
 	  //just thinking about tuning this value 
 	  #ifdef PSEUDO_COMMUTATION	
 	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/1000)-1; //timer_clock=1kHz;
@@ -125,8 +125,8 @@ void Timer3_sample_config(void){
 		NVIC_Initial.NVIC_IRQChannelCmd=ENABLE;
 		NVIC_Init(&NVIC_Initial);
 		
-		TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
-		
+		//TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
+		TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
 		//TIM_Cmd(TIM3,ENABLE);
  }
 void Sample_indicator_config(){
@@ -313,10 +313,10 @@ int Motor_Startup(uint8_t* Step,uint8_t* Next_Step, uint8_t* Start_up){
 			static uint8_t Zero_crossing_time=0;
 			Zero_crossing_time=0;
 			TIM_ITConfig(TIM3,TIM_IT_CC1,DISABLE);
-			*Start_up=1;
+			*Start_up=200;
 			TIM3->ARR=Start_up_change_step;//in start up phase, timer 3 period update interrupt is used for changing step in 6 step
 			
-			while(Zero_crossing_time<100){
+			while(Zero_crossing_time<Z_cross_startup){
 			
 			TIM_SetCompare3(TIM1,First_PWM_width);//Duty should be change to First_PWM_width. this code is for test. 
 			TIM_SetCompare2(TIM1,First_PWM_width);
@@ -333,7 +333,8 @@ int Motor_Startup(uint8_t* Step,uint8_t* Next_Step, uint8_t* Start_up){
 				}
 		  
 			TIM_Cmd(TIM3,ENABLE);
-			TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
+			//TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
+			TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
 			Commutation_six_tep(*Step);
 			
 			}
@@ -345,18 +346,32 @@ int Motor_Startup(uint8_t* Step,uint8_t* Next_Step, uint8_t* Start_up){
 }
 
 //***************
-int TIM3_action_at_BEMF_zero_crossing(uint8_t Start_up){
+int TIM3_action_at_BEMF_zero_crossing(int Start_up){
 	static int One_Step_time=0;//save last one step time by using static variable
-	
+	static int pre_One_Step_time=0;
+	static int Duration_one_step=0;
 	TIM_Cmd(TIM3,DISABLE);
-		
+	/*	
+	if( Start_up==1){
 	One_Step_time= TIM_GetCounter(TIM3);
+	if( One_Step_time< pre_One_Step_time){
+		Duration_one_step= Start_up_change_step+One_Step_time-pre_One_Step_time;
+		}
+	if( One_Step_time > pre_One_Step_time)
+	Duration_one_step= One_Step_time-pre_One_Step_time;
+	pre_One_Step_time=One_Step_time;
+	}
+	
+	if( Start_up==0)
+	*/
+	Duration_one_step= TIM_GetCounter(TIM3);
 	TIM_SetCounter(TIM3,0);
-	if(Start_up==0)
-	TIM_SetCompare1(TIM3,One_Step_time/2);// this function leads to commutation continute to happen without sucessful zero crossing detect
+	//if(Start_up==0)
+	TIM_SetCompare1(TIM3,Duration_one_step/2);// this function leads to commutation continute to happen without sucessful zero crossing detect
 	
 	TIM_Cmd(TIM3,ENABLE);
-	return One_Step_time;
+	
+	return Duration_one_step;
 }
 
 void Timer14_sample_config(void){
@@ -366,8 +381,8 @@ void Timer14_sample_config(void){
 		NVIC_InitTypeDef NVIC_Initial;
 		
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM14,ENABLE);
-	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/TIM14_clock)-1; //timer6_clock=1kHz;
-		TIM_TimeBaseInitial.TIM_Period =Sample_time;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
+	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/TIM14_clock_start_up)-1; //timer6_clock=1kHz;
+		TIM_TimeBaseInitial.TIM_Period =Start_up_change_step;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
 	  
 	
 		TIM_TimeBaseInitial.TIM_CounterMode=TIM_CounterMode_Up;
@@ -380,6 +395,6 @@ void Timer14_sample_config(void){
 		NVIC_Init(&NVIC_Initial);
 		
 		TIM_ITConfig(TIM14,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
-		
+		TIM_Cmd(TIM14,ENABLE);
 		
 }

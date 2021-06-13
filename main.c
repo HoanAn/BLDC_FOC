@@ -55,9 +55,9 @@ int	main(void)
 		while(1){
 	
 			
-		while((DMA_GetFlagStatus(DMA1_FLAG_TC1)) == RESET );    
+		//while((DMA_GetFlagStatus(DMA1_FLAG_TC1)) == RESET );    
     // Clear DMA TC flag, TC = transfer complete
-    DMA_ClearFlag(DMA1_FLAG_TC1);		
+    //DMA_ClearFlag(DMA1_FLAG_TC1);		
 		
 		
 		
@@ -65,14 +65,20 @@ int	main(void)
 		
 		if( ADC_Data[Virtual_ground] < 30){
 			Turn_on_P5V_driver();
+			//TIM3->PSC=SystemCoreClock/TIM3_clock-1;
+			TIM14->PSC=SystemCoreClock/TIM14_clock_start_up-1;
+			TIM14->ARR=Start_up_change_step;
 			Motor_Startup(&Step,&Next_Step,&Start_up);
 			Ramp_up_one_second=First_PWM_width;
-			TIM_Cmd(TIM3,DISABLE);
-			TIM3->CNT=0;
-			TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
+			//TIM_Cmd(TIM3,DISABLE);
+			//TIM3->CNT=0;
+			//TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
 			TIM3->ARR=50000-1;//20 times turns to 1second
-			TIM_Cmd(TIM3,ENABLE);
-			TIM_Cmd(TIM14,ENABLE);
+			//TIM3->PSC=SystemCoreClock/TIM3_clock-1;
+			TIM14->PSC=SystemCoreClock/TIM14_clock-1;
+			TIM14->ARR=Sample_time;
+			//TIM_Cmd(TIM3,ENABLE);
+			
 			
 		}
 		////-----------End Motor Start up--------------	
@@ -86,7 +92,8 @@ int	main(void)
 			TIM_SetCompare2(TIM1,Ramp_up_one_second);
 			TIM_SetCompare1(TIM1,Ramp_up_one_second);
 		  Current_per_phase_calculate(ADC_Data[Current_sense_A],ADC_Data[Current_sense_B],ADC_Data[Current_sense_C],&Current_phase_A,&Current_phase_B,&Current_phase_C,Step);
-			 if( Current_phase_A>1700 || Current_phase_A<-1700) Turn_off_P5V_driver();// over current and start up again
+			 if( Current_phase_A>2000 || Current_phase_A<-2000) Turn_off_P5V_driver();// over current and start up again
+		// need to consider turn off P5V_driver_condition
 		}
 	}
 	
@@ -99,6 +106,7 @@ void TIM3_IRQHandler(){
 	//TIM_Cmd(TIM3,DISABLE);
 	
 	//////for start up phase/////
+	/*
 	if(TIM_GetITStatus(TIM3, TIM_IT_Update)){
 	if (Start_up ==1){
 		Turn_on_P5V_driver();
@@ -117,6 +125,7 @@ void TIM3_IRQHandler(){
 	}
 	
 	}
+	*/
 
 	//--------changing step when running---------------------
 	if(TIM_GetITStatus(TIM3, TIM_IT_CC1)){
@@ -143,7 +152,7 @@ void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	TIM_ClearITPendingBit(TIM3,TIM_IT_CC1);
 	//TIM_ITConfig(TIM1,TIM_IT_CC4|TIM_IT_COM|TIM_IT_Update,ENABLE);
-	TIM_Cmd(TIM1,ENABLE);
+//	TIM_Cmd(TIM1,ENABLE);
 	
 
 }
@@ -152,7 +161,8 @@ void TIM3_IRQHandler(){
 void TIM1_BRK_UP_TRG_COM_IRQHandler(void){
 	
 	if(TIM_GetITStatus(TIM1,TIM_IT_COM)){
-    TIM_ClearITPendingBit(TIM1,TIM_IT_COM);	
+    TIM_ClearITPendingBit(TIM1,TIM_IT_COM);
+		
 	}
 	
 TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
@@ -165,10 +175,14 @@ TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 void TIM1_CC_IRQHandler(void){//line 7 PWM.c, connfig CCR interrupt only on channel 4.
 TIM_ClearITPendingBit(TIM1,TIM_IT_CC4);
 	
-	Toggle_PB10();
+	//while((DMA_GetFlagStatus(DMA1_FLAG_TC1)) == RESET );    
+    // Clear DMA TC flag, TC = transfer complete
+   // DMA_ClearFlag(DMA1_FLAG_TC1);	
+	
 	if( ADC_Data[Virtual_ground] > 30){
 	Back_Emf_detect(ADC_Data[V_Phase_A], ADC_Data[V_Phase_B], ADC_Data[V_Phase_C], ADC_Data[Virtual_ground],&Next_Step,Step,Start_up,&zero_cross_period);
 	}
+	Toggle_PB10();
 	
 }
 //-------------END------------------------------------------------------------------------------
@@ -210,11 +224,40 @@ void DMA1_Channel2_3_IRQHandler(void){
 void TIM14_IRQHandler(){
 	//P5V_driver=1-P5V_driver;
 	//	GPIO_WriteBit(GPIOB,GPIO_Pin_2,P5V_driver);
+
+	//--------for start up phase---
+	if(TIM_GetITStatus(TIM14, TIM_IT_Update)){
+	if (Start_up >0 ){
+		Turn_on_P5V_driver();
+   Step++;
+		if (Step >6) Step =1;
+		Next_Step=Step;
+		Current_per_phase_calculate(ADC_Data[Current_sense_A],ADC_Data[Current_sense_B],ADC_Data[Current_sense_C],&Current_phase_A,&Current_phase_B,&Current_phase_C,Step);
+  //if( Current_phase_A>1700 || Current_phase_A<-1700) Turn_off_P5V_driver();
+	}
+	/*
+	if (Start_up ==0){
+   Stop_time++;
+	if(Stop_time>20){//if cannot detect zero crossing in 1s, after Start_up, 5V driver will off.
+		//Turn_off_P5V_driver();
+		Stop_time=0;
+	}
+	}
+	*/
+	}
+	////////////////////////////////
+	
 	if(Start_up==0){//------increase step time for ramp up
 
 	Ramp_up_one_second = Ramp_up_one_second +  (Duty-Duty_old)/10;
 		if(Ramp_up_one_second>Duty && Duty > Duty_old) Ramp_up_one_second=Duty;
-		if(Ramp_up_one_second<250 ) Ramp_up_one_second=250;
+		if(Ramp_up_one_second<Duty && Duty < Duty_old) Ramp_up_one_second=Duty;
+		if(Ramp_up_one_second<Min_PWM_width ) Ramp_up_one_second=Min_PWM_width;
+		if(Ramp_up_one_second>Max_PWM_width ) Ramp_up_one_second=Max_PWM_width;
 	}
 	TIM_ClearITPendingBit(TIM14,TIM_IT_Update);
+}
+
+void DMA1_Channel1_IRQHandler(void){
+	    DMA_ClearFlag(DMA1_FLAG_TC1);
 }

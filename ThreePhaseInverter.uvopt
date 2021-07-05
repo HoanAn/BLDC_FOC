@@ -8,11 +8,12 @@
   <Extensions>
     <cExt>*.c</cExt>
     <aExt>*.s*; *.src; *.a*</aExt>
-    <oExt>*.obj</oExt>
+    <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc</tExt>
+    <tExt>*.txt; *.h; *.inc; *.md</tExt>
     <pExt>*.plm</pExt>
-    <CppX>*.cpp</CppX>
+    <CppX>*.cpp; *.cc; *.cxx</CppX>
+    <nMigrate>0</nMigrate>
   </Extensions>
 
   <DaveTm>
@@ -27,10 +28,11 @@
     <TargetOption>
       <CLKADS>8000000</CLKADS>
       <OPTTT>
-        <gFlags>1</gFlags>
+        <gFlags>0</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
         <RunSim>1</RunSim>
         <RunTarget>0</RunTarget>
+        <RunAbUc>0</RunAbUc>
       </OPTTT>
       <OPTHX>
         <HexSelection>1</HexSelection>
@@ -71,33 +73,11 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
-      <CpuCode>255</CpuCode>
-      <Books>
-        <Book>
-          <Number>0</Number>
-          <Title>Data Sheet</Title>
-          <Path>DATASHTS\ST\STM32F0xx\DM00088500.pdf</Path>
-        </Book>
-        <Book>
-          <Number>1</Number>
-          <Title>Reference Manual</Title>
-          <Path>DATASHTS\ST\STM32F0xx\DM00031936.pdf</Path>
-        </Book>
-        <Book>
-          <Number>2</Number>
-          <Title>Technical Reference Manual</Title>
-          <Path>datashts\arm\cortex_m0\r0p0\DDI0432C_CORTEX_M0_R0P0_TRM.PDF</Path>
-        </Book>
-        <Book>
-          <Number>3</Number>
-          <Title>Generic User Guide</Title>
-          <Path>datashts\arm\cortex_m0\r0p0\DUI0497A_CORTEX_M0_R0P0_GENERIC_UG.PDF</Path>
-        </Book>
-      </Books>
+      <CpuCode>0</CpuCode>
       <DebugOpt>
         <uSim>0</uSim>
         <uTrg>1</uTrg>
@@ -115,13 +95,15 @@
         <tRmem>1</tRmem>
         <tRfunc>0</tRfunc>
         <tRbox>1</tRbox>
-        <tRtrace>1</tRtrace>
+        <tRtrace>0</tRtrace>
         <sRSysVw>1</sRSysVw>
         <tRSysVw>1</tRSysVw>
-        <tPdscDbg>0</tPdscDbg>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>11</nTsel>
+        <bEvRecOn>1</bEvRecOn>
+        <bSchkAxf>0</bSchkAxf>
+        <bTchkAxf>0</bTchkAxf>
+        <nTsel>6</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -137,112 +119,13 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGTARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>ARMDBGFLAGS</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>(105=-1,-1,-1,-1,0)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U-O207 -O207 -S0 -C0 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F0xx_64 -FS08000000 -FL010000</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F0xx_64 -FS08000000 -FL010000)</Name>
+          <Name>UL2CM3(-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F0xx_64 -FS08000000 -FL010000)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>78</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221408</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>67</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221364</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>53</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221326</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>50</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221316</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>45</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221310</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
+<<<<<<< HEAD
+=======
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -287,7 +170,7 @@
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Start_up</ItemText>
+          <ItemText>Start_up,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
@@ -308,6 +191,21 @@
           <count>12</count>
           <WinNumber>1</WinNumber>
           <ItemText>Tx_buff</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Duty,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Ramp_up_one_second,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>zero_cross_period,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -332,18 +230,19 @@
           <ItemText>TIM3-&gt;CNT</ItemText>
         </Ww>
       </WatchWindow2>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
-        <periodic>1</periodic>
+        <periodic>0</periodic>
         <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>1</viewmode>
+        <viewmode>0</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -363,26 +262,48 @@
       </DebugFlag>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
+<<<<<<< HEAD
+      <bLintAuto>0</bLintAuto>
+      <bAutoGenD>0</bAutoGenD>
+      <LntExFlags>0</LntExFlags>
+      <pMisraName></pMisraName>
+      <pszMrule></pszMrule>
+      <pSingCmds></pSingCmds>
+      <pMultCmds></pMultCmds>
+      <pMisraNamep></pMisraNamep>
+      <pszMrulep></pszMrulep>
+      <pSingCmdsp></pSingCmdsp>
+      <pMultCmdsp></pMultCmdsp>
+=======
       <SystemViewers>
-        <Entry>
-          <Name>System Viewer\DMA</Name>
-          <WinId>35905</WinId>
-        </Entry>
         <Entry>
           <Name>System Viewer\GPIOB</Name>
           <WinId>35904</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\NVIC</Name>
+          <WinId>35902</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\TIM14</Name>
+          <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\TIM3</Name>
+          <WinId>35901</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\USART1</Name>
           <WinId>35903</WinId>
         </Entry>
       </SystemViewers>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
     </TargetOption>
   </Target>
 
   <Group>
     <GroupName>Startup</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -391,11 +312,12 @@
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>115</TopLine>
-      <CurrentLine>129</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\system_stm32f0xx.c</PathWithFileName>
       <FilenameWithoutPath>system_stm32f0xx.c</FilenameWithoutPath>
@@ -407,13 +329,14 @@
       <FileNumber>2</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>114</TopLine>
+<<<<<<< HEAD
+=======
+      <TopLine>127</TopLine>
       <CurrentLine>133</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
-      <PathWithFileName>D:\HOC TAP\HTDKN\ref\ST\en.stm32f0_stdperiph_lib\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templates\arm\startup_stm32f0xx.s</PathWithFileName>
+      <PathWithFileName>D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s</PathWithFileName>
       <FilenameWithoutPath>startup_stm32f0xx.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -422,7 +345,7 @@
 
   <Group>
     <GroupName>User</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -430,12 +353,17 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>3</FileNumber>
       <FileType>1</FileType>
+<<<<<<< HEAD
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>4</TopLine>
-      <CurrentLine>25</CurrentLine>
+=======
+      <tvExp>1</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>4</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>79</TopLine>
+      <CurrentLine>102</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -447,11 +375,15 @@
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+<<<<<<< HEAD
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>266</TopLine>
-      <CurrentLine>330</CurrentLine>
+=======
+      <Focus>0</Focus>
+      <ColumnNumber>22</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>337</TopLine>
+      <CurrentLine>370</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\PWM_control.c</PathWithFileName>
       <FilenameWithoutPath>PWM_control.c</FilenameWithoutPath>
@@ -463,11 +395,12 @@
       <FileNumber>5</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>61</TopLine>
-      <CurrentLine>76</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>91</TopLine>
+      <CurrentLine>159</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\ADC_control.c</PathWithFileName>
       <FilenameWithoutPath>ADC_control.c</FilenameWithoutPath>
@@ -479,11 +412,12 @@
       <FileNumber>6</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>2</TopLine>
-      <CurrentLine>53</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>1</TopLine>
+      <CurrentLine>34</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\DMA_control.c</PathWithFileName>
       <FilenameWithoutPath>DMA_control.c</FilenameWithoutPath>
@@ -495,11 +429,15 @@
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
+<<<<<<< HEAD
+      <tvExpOptDlg>0</tvExpOptDlg>
+=======
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>24</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>15</CurrentLine>
+      <CurrentLine>13</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\I_O_control.c</PathWithFileName>
       <FilenameWithoutPath>I_O_control.c</FilenameWithoutPath>
@@ -511,11 +449,15 @@
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>28</ColumnNumber>
+<<<<<<< HEAD
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>37</CurrentLine>
+=======
+      <Focus>0</Focus>
+      <ColumnNumber>2</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\Communication.c</PathWithFileName>
       <FilenameWithoutPath>Communication.c</FilenameWithoutPath>
@@ -526,7 +468,7 @@
 
   <Group>
     <GroupName>Periph_Driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -535,11 +477,12 @@
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>479</TopLine>
-      <CurrentLine>510</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_gpio.c</FilenameWithoutPath>
@@ -551,11 +494,12 @@
       <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>33</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1356</TopLine>
-      <CurrentLine>1371</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_rcc.c</FilenameWithoutPath>
@@ -567,11 +511,7 @@
       <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_i2c.c</FilenameWithoutPath>
@@ -583,11 +523,15 @@
       <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+<<<<<<< HEAD
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>2374</TopLine>
-      <CurrentLine>2376</CurrentLine>
+=======
+      <Focus>0</Focus>
+      <ColumnNumber>20</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1931</TopLine>
+      <CurrentLine>1931</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_tim.c</FilenameWithoutPath>
@@ -599,11 +543,7 @@
       <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_exti.c</FilenameWithoutPath>
@@ -615,11 +555,7 @@
       <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>55</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\stm32f0xx_it.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_it.c</FilenameWithoutPath>
@@ -631,11 +567,7 @@
       <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_syscfg.c</FilenameWithoutPath>
@@ -647,11 +579,12 @@
       <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
+<<<<<<< HEAD
+=======
       <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_misc.c</FilenameWithoutPath>
@@ -663,11 +596,12 @@
       <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>930</TopLine>
-      <CurrentLine>939</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_adc.c</FilenameWithoutPath>
@@ -679,11 +613,12 @@
       <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>604</TopLine>
-      <CurrentLine>611</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_dma.c</FilenameWithoutPath>
@@ -695,11 +630,12 @@
       <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1660</TopLine>
-      <CurrentLine>1677</CurrentLine>
+<<<<<<< HEAD
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> bdc893c7d0c7c9f85878272c1415c28b8944b199
       <bDave2>0</bDave2>
       <PathWithFileName>.\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.c</PathWithFileName>
       <FilenameWithoutPath>stm32f0xx_usart.c</FilenameWithoutPath>

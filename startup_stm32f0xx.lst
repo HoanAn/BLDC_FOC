@@ -427,12 +427,11 @@ ARM Macro Assembler    Page 7
               00000400 
               00000200 
               00000000 
-Command Line: --debug --xref --cpu=Cortex-M0 --apcs=interwork --depend=.\startu
-p_stm32f0xx.d -o.\startup_stm32f0xx.o -ID:\KeilC\ARM\RV31\INC -ID:\KeilC\ARM\CM
-SIS\Include -ID:\KeilC\ARM\Inc\ST\STM32F0xx --predefine="__EVAL SETA 1" --list=
-.\startup_stm32f0xx.lst "D:\HOC TAP\HTDKN\ref\ST\en.stm32f0_stdperiph_lib\STM32
-F0xx_StdPeriph_Lib_V1.5.0\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templates\
-arm\startup_stm32f0xx.s"
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
+ork --depend=.\startup_stm32f0xx.d -o.\startup_stm32f0xx.o -IC:\Keil_v5\ARM\RV3
+1\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\ST\STM32F0xx --predef
+ine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 534" --list=.\startup_s
+tm32f0xx.lst D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 
 
@@ -443,7 +442,7 @@ STACK 00000000
 
 Symbol: STACK
    Definitions
-      At line 42 in file D:\HOC
+      At line 42 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: STACK unused
@@ -451,19 +450,19 @@ Stack_Mem 00000000
 
 Symbol: Stack_Mem
    Definitions
-      At line 43 in file D:\HOC
+      At line 43 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 274 in file D:\HOC
-      At line 276 in file D:\HOC
+      At line 274 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 276 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 __initial_sp 00000400
 
 Symbol: __initial_sp
    Definitions
-      At line 44 in file D:\HOC
+      At line 44 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 68 in file D:\HOC
-      At line 133 in file D:\HOC
+      At line 68 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 133 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 3 symbols
 
@@ -476,7 +475,7 @@ HEAP 00000000
 
 Symbol: HEAP
    Definitions
-      At line 53 in file D:\HOC
+      At line 53 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: HEAP unused
@@ -484,16 +483,16 @@ Heap_Mem 00000000
 
 Symbol: Heap_Mem
    Definitions
-      At line 55 in file D:\HOC
+      At line 55 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 273 in file D:\HOC
-      At line 275 in file D:\HOC
+      At line 273 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 275 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
-      At line 54 in file D:\HOC
+      At line 54 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: __heap_base unused
@@ -501,7 +500,7 @@ __heap_limit 00000200
 
 Symbol: __heap_limit
    Definitions
-      At line 56 in file D:\HOC
+      At line 56 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: __heap_limit unused
@@ -516,7 +515,7 @@ RESET 00000000
 
 Symbol: RESET
    Definitions
-      At line 63 in file D:\HOC
+      At line 63 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: RESET unused
@@ -524,19 +523,19 @@ __Vectors 00000000
 
 Symbol: __Vectors
    Definitions
-      At line 68 in file D:\HOC
+      At line 68 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 64 in file D:\HOC
-      At line 121 in file D:\HOC
+      At line 64 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 121 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 __Vectors_End 000000C0
 
 Symbol: __Vectors_End
    Definitions
-      At line 119 in file D:\HOC
+      At line 119 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 65 in file D:\HOC
-      At line 121 in file D:\HOC
+      At line 65 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 121 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 3 symbols
 
@@ -549,7 +548,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 123 in file D:\HOC
+      At line 123 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: .text unused
@@ -557,66 +556,66 @@ ADC1_COMP_IRQHandler 00000030
 
 Symbol: ADC1_COMP_IRQHandler
    Definitions
-      At line 233 in file D:\HOC
+      At line 233 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 98 in file D:\HOC
-      At line 202 in file D:\HOC
+      At line 98 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 202 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 ApplicationStart 0000001E
 
 Symbol: ApplicationStart
    Definitions
-      At line 157 in file D:\HOC
+      At line 157 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 144 in file D:\HOC
+      At line 144 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 Comment: ApplicationStart used once
 CEC_IRQHandler 00000030
 
 Symbol: CEC_IRQHandler
    Definitions
-      At line 249 in file D:\HOC
+      At line 249 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 116 in file D:\HOC
-      At line 218 in file D:\HOC
+      At line 116 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 218 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 DMA1_Channel1_IRQHandler 00000030
 
 Symbol: DMA1_Channel1_IRQHandler
    Definitions
-      At line 230 in file D:\HOC
+      At line 230 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 95 in file D:\HOC
-      At line 199 in file D:\HOC
+      At line 95 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 199 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 DMA1_Channel2_3_IRQHandler 00000030
 
 Symbol: DMA1_Channel2_3_IRQHandler
    Definitions
-      At line 231 in file D:\HOC
+      At line 231 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 96 in file D:\HOC
-      At line 200 in file D:\HOC
+      At line 96 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 200 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 DMA1_Channel4_5_IRQHandler 00000030
 
 Symbol: DMA1_Channel4_5_IRQHandler
    Definitions
-      At line 232 in file D:\HOC
+      At line 232 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 97 in file D:\HOC
+      At line 97 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 
 
 ARM Macro Assembler    Page 2 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 201 in file D:\HOC
+      At line 201 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 Default_Handler 00000030
 
 Symbol: Default_Handler
    Definitions
-      At line 188 in file D:\HOC
+      At line 188 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: Default_Handler unused
@@ -624,46 +623,46 @@ EXTI0_1_IRQHandler 00000030
 
 Symbol: EXTI0_1_IRQHandler
    Definitions
-      At line 226 in file D:\HOC
+      At line 226 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 91 in file D:\HOC
-      At line 195 in file D:\HOC
+      At line 91 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 195 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 EXTI2_3_IRQHandler 00000030
 
 Symbol: EXTI2_3_IRQHandler
    Definitions
-      At line 227 in file D:\HOC
+      At line 227 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 92 in file D:\HOC
-      At line 196 in file D:\HOC
+      At line 92 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 196 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 EXTI4_15_IRQHandler 00000030
 
 Symbol: EXTI4_15_IRQHandler
    Definitions
-      At line 228 in file D:\HOC
+      At line 228 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 93 in file D:\HOC
-      At line 197 in file D:\HOC
+      At line 93 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 197 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 FLASH_IRQHandler 00000030
 
 Symbol: FLASH_IRQHandler
    Definitions
-      At line 224 in file D:\HOC
+      At line 224 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 89 in file D:\HOC
-      At line 193 in file D:\HOC
+      At line 89 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 193 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 HardFault_Handler 00000028
 
 Symbol: HardFault_Handler
    Definitions
-      At line 171 in file D:\HOC
+      At line 171 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 71 in file D:\HOC
-      At line 172 in file D:\HOC
+      At line 71 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 172 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 I2C1_IRQHandler 00000030
 
@@ -675,64 +674,64 @@ Symbol: I2C1_IRQHandler
 ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 243 in file D:\HOC
+      At line 243 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 109 in file D:\HOC
-      At line 212 in file D:\HOC
+      At line 109 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 212 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 I2C2_IRQHandler 00000030
 
 Symbol: I2C2_IRQHandler
    Definitions
-      At line 244 in file D:\HOC
+      At line 244 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 110 in file D:\HOC
-      At line 213 in file D:\HOC
+      At line 110 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 213 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 NMI_Handler 00000026
 
 Symbol: NMI_Handler
    Definitions
-      At line 166 in file D:\HOC
+      At line 166 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 70 in file D:\HOC
-      At line 167 in file D:\HOC
+      At line 70 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 167 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 PVD_IRQHandler 00000030
 
 Symbol: PVD_IRQHandler
    Definitions
-      At line 222 in file D:\HOC
+      At line 222 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 87 in file D:\HOC
-      At line 191 in file D:\HOC
+      At line 87 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 191 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 PendSV_Handler 0000002C
 
 Symbol: PendSV_Handler
    Definitions
-      At line 179 in file D:\HOC
+      At line 179 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 82 in file D:\HOC
-      At line 180 in file D:\HOC
+      At line 82 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 180 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 RCC_IRQHandler 00000030
 
 Symbol: RCC_IRQHandler
    Definitions
-      At line 225 in file D:\HOC
+      At line 225 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 90 in file D:\HOC
-      At line 194 in file D:\HOC
+      At line 90 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 194 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 RTC_IRQHandler 00000030
 
 Symbol: RTC_IRQHandler
    Definitions
-      At line 223 in file D:\HOC
+      At line 223 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 88 in file D:\HOC
-      At line 192 in file D:\HOC
+      At line 88 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 192 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 
 
@@ -744,61 +743,61 @@ Reset_Handler 00000000
 
 Symbol: Reset_Handler
    Definitions
-      At line 126 in file D:\HOC
+      At line 126 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 69 in file D:\HOC
-      At line 127 in file D:\HOC
+      At line 69 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 127 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 SPI1_IRQHandler 00000030
 
 Symbol: SPI1_IRQHandler
    Definitions
-      At line 245 in file D:\HOC
+      At line 245 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 111 in file D:\HOC
-      At line 214 in file D:\HOC
+      At line 111 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 214 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 SPI2_IRQHandler 00000030
 
 Symbol: SPI2_IRQHandler
    Definitions
-      At line 246 in file D:\HOC
+      At line 246 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 112 in file D:\HOC
-      At line 215 in file D:\HOC
+      At line 112 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 215 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 SVC_Handler 0000002A
 
 Symbol: SVC_Handler
    Definitions
-      At line 175 in file D:\HOC
+      At line 175 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 79 in file D:\HOC
-      At line 176 in file D:\HOC
+      At line 79 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 176 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 SysTick_Handler 0000002E
 
 Symbol: SysTick_Handler
    Definitions
-      At line 183 in file D:\HOC
+      At line 183 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 83 in file D:\HOC
-      At line 184 in file D:\HOC
+      At line 83 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 184 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM14_IRQHandler 00000030
 
 Symbol: TIM14_IRQHandler
    Definitions
-      At line 239 in file D:\HOC
+      At line 239 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 105 in file D:\HOC
-      At line 208 in file D:\HOC
+      At line 105 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 208 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM15_IRQHandler 00000030
 
 Symbol: TIM15_IRQHandler
    Definitions
-      At line 240 in file D:\HOC
+      At line 240 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 
 
@@ -806,62 +805,62 @@ ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
    Uses
-      At line 106 in file D:\HOC
-      At line 209 in file D:\HOC
+      At line 106 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 209 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM16_IRQHandler 00000030
 
 Symbol: TIM16_IRQHandler
    Definitions
-      At line 241 in file D:\HOC
+      At line 241 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 107 in file D:\HOC
-      At line 210 in file D:\HOC
+      At line 107 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 210 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM17_IRQHandler 00000030
 
 Symbol: TIM17_IRQHandler
    Definitions
-      At line 242 in file D:\HOC
+      At line 242 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 108 in file D:\HOC
-      At line 211 in file D:\HOC
+      At line 108 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 211 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM1_BRK_UP_TRG_COM_IRQHandler 00000030
 
 Symbol: TIM1_BRK_UP_TRG_COM_IRQHandler
    Definitions
-      At line 234 in file D:\HOC
+      At line 234 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 99 in file D:\HOC
-      At line 203 in file D:\HOC
+      At line 99 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 203 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM1_CC_IRQHandler 00000030
 
 Symbol: TIM1_CC_IRQHandler
    Definitions
-      At line 235 in file D:\HOC
+      At line 235 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 100 in file D:\HOC
-      At line 204 in file D:\HOC
+      At line 100 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 204 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM2_IRQHandler 00000030
 
 Symbol: TIM2_IRQHandler
    Definitions
-      At line 236 in file D:\HOC
+      At line 236 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 101 in file D:\HOC
-      At line 205 in file D:\HOC
+      At line 101 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 205 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM3_IRQHandler 00000030
 
 Symbol: TIM3_IRQHandler
    Definitions
-      At line 237 in file D:\HOC
+      At line 237 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 102 in file D:\HOC
-      At line 206 in file D:\HOC
+      At line 102 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 206 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TIM6_DAC_IRQHandler 00000030
 
@@ -873,54 +872,54 @@ Relocatable symbols
 
 Symbol: TIM6_DAC_IRQHandler
    Definitions
-      At line 238 in file D:\HOC
+      At line 238 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 103 in file D:\HOC
-      At line 207 in file D:\HOC
+      At line 103 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 207 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 TS_IRQHandler 00000030
 
 Symbol: TS_IRQHandler
    Definitions
-      At line 229 in file D:\HOC
+      At line 229 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 94 in file D:\HOC
-      At line 198 in file D:\HOC
+      At line 94 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 198 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 USART1_IRQHandler 00000030
 
 Symbol: USART1_IRQHandler
    Definitions
-      At line 247 in file D:\HOC
+      At line 247 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 113 in file D:\HOC
-      At line 216 in file D:\HOC
+      At line 113 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 216 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 USART2_IRQHandler 00000030
 
 Symbol: USART2_IRQHandler
    Definitions
-      At line 248 in file D:\HOC
+      At line 248 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 114 in file D:\HOC
-      At line 217 in file D:\HOC
+      At line 114 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 217 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 WWDG_IRQHandler 00000030
 
 Symbol: WWDG_IRQHandler
    Definitions
-      At line 221 in file D:\HOC
+      At line 221 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 86 in file D:\HOC
-      At line 190 in file D:\HOC
+      At line 86 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 190 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 __user_initial_stackheap 00000034
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 271 in file D:\HOC
+      At line 271 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 269 in file D:\HOC
+      At line 269 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 Comment: __user_initial_stackheap used once
 39 symbols
 
@@ -933,27 +932,27 @@ Heap_Size 00000200
 
 Symbol: Heap_Size
    Definitions
-      At line 51 in file D:\HOC
+      At line 51 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 55 in file D:\HOC
-      At line 275 in file D:\HOC
+      At line 55 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 275 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 Stack_Size 00000400
 
 Symbol: Stack_Size
    Definitions
-      At line 40 in file D:\HOC
+      At line 40 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 43 in file D:\HOC
-      At line 274 in file D:\HOC
+      At line 43 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
+      At line 274 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 
 __Vectors_Size 000000C0
 
 Symbol: __Vectors_Size
    Definitions
-      At line 121 in file D:\HOC
+      At line 121 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 66 in file D:\HOC
+      At line 66 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 Comment: __Vectors_Size used once
 3 symbols
 
@@ -966,25 +965,25 @@ SystemInit 00000000
 
 Symbol: SystemInit
    Definitions
-      At line 129 in file D:\HOC
+      At line 129 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 158 in file D:\HOC
+      At line 158 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 Comment: SystemInit used once
 __main 00000000
 
 Symbol: __main
    Definitions
-      At line 128 in file D:\HOC
+      At line 128 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
-      At line 160 in file D:\HOC
+      At line 160 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 268 in file D:\HOC
+      At line 268 in file D:\An\BLDC_driver\bldc_driver\startup_stm32f0xx.s
    Uses
       None
 Comment: __use_two_region_memory unused
 3 symbols
-390 symbols in table
+391 symbols in table

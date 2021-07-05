@@ -9,6 +9,7 @@ void Timer1_PWM_config(void){
 	TIM_TimeBaseInitTypeDef TIM_TimeBasePWMInitial;
 	TIM_OCInitTypeDef TIM_OCPWMInitial;
 	NVIC_InitTypeDef NVIC_Initial;
+	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE); 
 	////////////Config Basic Timer//////////////////
@@ -21,7 +22,7 @@ void Timer1_PWM_config(void){
 	TIM_TimeBaseInit(TIM1, &TIM_TimeBasePWMInitial);//Config it
 	
 	//////////////////Config PWM Source//////////////////////////////
-	TIM_OCPWMInitial.TIM_OCMode= TIM_OCMode_PWM1;// PWM1 : OC output active when TIM1_CNT<TIM1_CCR1 (counting up) and TIM1_CNT<TIM1_CCR1(counting down), inverse for TIM_OCMode_PWM2
+	TIM_OCPWMInitial.TIM_OCMode= TIM_OCMode_PWM1;// PWM1 : OC output active when TIM1_CNT<TIM1_CCR1 (counting up) and TIM1_CNT<TIM1_CCR1(counting down), inverse for TIM_OCMode_PWM1
 	TIM_OCPWMInitial.TIM_OutputState=TIM_OutputState_Enable;//Enable Output
 	TIM_OCPWMInitial.TIM_OutputNState = TIM_OutputNState_Enable;
 	TIM_OCPWMInitial.TIM_OCPolarity=TIM_OCPolarity_High;//PWM output active High
@@ -30,7 +31,7 @@ void Timer1_PWM_config(void){
 	
 	////////////////Interrupt////////////////
 	NVIC_Initial.NVIC_IRQChannel = TIM1_BRK_UP_TRG_COM_IRQn;// TIM1 Break, Update, Trigger and Commutation Interrupts// step communication.
-	NVIC_Initial.NVIC_IRQChannelPriority=1;
+	NVIC_Initial.NVIC_IRQChannelPriority=2;
 	NVIC_Initial.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_Initial);
 	
@@ -39,7 +40,10 @@ void Timer1_PWM_config(void){
 	NVIC_Initial.NVIC_IRQChannelPriority=3;
 	NVIC_Initial.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_Initial);
-
+	
+	//////////////Config dead time/////////////
+	TIM_BDTRInitStructure.TIM_DeadTime=10;
+	TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
 	//TIM_Cmd(TIM1,ENABLE);
 	/////////////////Config every single channel////////////////
 	TIM_OC1Init(TIM1,&TIM_OCPWMInitial);//channel 1
@@ -104,8 +108,8 @@ void Timer3_sample_config(void){
 		NVIC_InitTypeDef NVIC_Initial;
 		
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
-	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/1000000)-1; //timer3_clock=60kHz 4 times with pwm freq;
-		TIM_TimeBaseInitial.TIM_Period =1000-1;//first setting for motor startup, take 15 pulses (1ms vs 15kHz pwm) before changing to next step in startup phases
+	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/TIM3_clock)-1; //timer3_clock=10kHz;
+		TIM_TimeBaseInitial.TIM_Period =50000-1;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
 	  //just thinking about tuning this value 
 	  #ifdef PSEUDO_COMMUTATION	
 	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/1000)-1; //timer_clock=1kHz;
@@ -117,12 +121,12 @@ void Timer3_sample_config(void){
 		TIM_TimeBaseInit(TIM3,&TIM_TimeBaseInitial);
 		////////////////Interrupt////////////////
 		NVIC_Initial.NVIC_IRQChannel = TIM3_IRQn;
-		NVIC_Initial.NVIC_IRQChannelPriority=2;
+		NVIC_Initial.NVIC_IRQChannelPriority=0;
 		NVIC_Initial.NVIC_IRQChannelCmd=ENABLE;
 		NVIC_Init(&NVIC_Initial);
 		
-		TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
-		
+		//TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
+		TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
 		//TIM_Cmd(TIM3,ENABLE);
  }
 void Sample_indicator_config(){
@@ -143,7 +147,7 @@ switch(Step){//change state of PWM output corresponding to steps
 	  	
 		case 1://ATop_BBottom.
 			{
-				//PWM1 : OC output active when TIM1_CNT<TIM1_CCR1 (counting up) and TIM1_CNT<TIM1_CCR1(counting down), inverse for TIM_OCMode_PWM2
+				//PWM1 : OC output active when TIM1_CNT<TIM1_CCR1 (counting up) and TIM1_CNT<TIM1_CCR1(counting down), inverse for TIM_OCMode_PWM1
 				// Please explain ?
 				// Explain: to makesure PWWM channel comeback to normal status after being configured in previous step. 
 				//WARNING!! Consider dead time
@@ -151,8 +155,8 @@ switch(Step){//change state of PWM output corresponding to steps
 				TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);	
 				TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_Active);
 				
-				TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
-	      TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_Low);
+	      TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 				TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 				TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);//should be Enable, test again.
 				
@@ -176,8 +180,8 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_ForcedOC2Config(TIM1,TIM_ForcedAction_Active);
 					TIM_ForcedOC3Config(TIM1,TIM_ForcedAction_Active);
 				
-				  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
-					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_Low);
+					TIM_OC1NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 							
@@ -205,8 +209,8 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 				
-				  TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
-					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+				  TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_Low);
+					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 				
@@ -228,8 +232,8 @@ switch(Step){//change state of PWM output corresponding to steps
 				  TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);
 
-					TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_High);
-					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_High);
+					TIM_OC2PolarityConfig(TIM1,TIM_OCPolarity_Low);
+					TIM_OC2NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
 				  TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 
@@ -256,8 +260,8 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 				
-					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);
-				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_Low);
 					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 				break;
@@ -278,8 +282,8 @@ switch(Step){//change state of PWM output corresponding to steps
 					TIM_CCxCmd(TIM1,TIM_Channel_2,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_2,TIM_CCxN_Enable);
 					
-					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_High);
-				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_High);
+					TIM_OC3NPolarityConfig(TIM1,TIM_OCNPolarity_Low);
+				  TIM_OC3PolarityConfig(TIM1,TIM_OCPolarity_Low);
 					TIM_CCxCmd(TIM1,TIM_Channel_3,TIM_CCx_Enable);
 					TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);
 				break;
@@ -306,41 +310,91 @@ int Motor_Startup(uint8_t* Step,uint8_t* Next_Step, uint8_t* Start_up){
 	
 	//studying this topic. aligned rotor at specific position, but how much time
 	//should we changing position and read BACK_EMF at the same time to determine where is the rotor.
-	/*  uint8_t Done=0;
-	uint8_t times=1;
-	//*Step=1;
-	while(!Done){
-	
-		if(*Step == *Next_Step){}//waiting for response from TIM3 interrupt.This diffirence means zero crossing has been detected
-			else{
-			GPIO_WriteBit(GPIOB,GPIO_Pin_9,1);
-			times++;
-			GPIO_WriteBit(GPIOB,GPIO_Pin_9,0);
-			//toggle when BEMF is detected
-			//times++;
-			if (times > 6) Done=1;// detect 6 zero crossing BEMF times is enough and start up phase ends. 
-		}
+			static uint8_t Zero_crossing_time=0;
+			Zero_crossing_time=0;
+			TIM_ITConfig(TIM3,TIM_IT_CC1,DISABLE);
+			*Start_up=200;
+			TIM3->ARR=Start_up_change_step;//in start up phase, timer 3 period update interrupt is used for changing step in 6 step
+			
+			while(Zero_crossing_time<Z_cross_startup){
+			
+			TIM_SetCompare3(TIM1,First_PWM_width);//Duty should be change to First_PWM_width. this code is for test. 
+			TIM_SetCompare2(TIM1,First_PWM_width);
+			TIM_SetCompare1(TIM1,First_PWM_width);
+						
+			TIM_ITConfig(TIM3,TIM_IT_Update,DISABLE);
+		  //TIM_ITConfig(TIM1,TIM_IT_CC4|TIM_IT_COM|TIM_IT_Update,DISABLE);
+			
+				if(*Next_Step != *Step ){//waiting for response from TIM3 interrupt.This diffirence means zero crossing has been detected
+				
+				Zero_crossing_time++;
+				*Next_Step=*Step;
+				
+				}
+		  
+			TIM_Cmd(TIM3,ENABLE);
+			//TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
+			TIM_ITConfig(TIM3,TIM_IT_CC1|TIM_IT_Update,ENABLE);
 			Commutation_six_tep(*Step);
-	}
-	*Start_up=0;
-	//reconfig interrupt, just capture compare interrupt, do not need interval interrupt anymore !!
-	return *Step;
-	*/
-	Commutation_six_tep(*Step);
+			
+			}
+			*Start_up=0;
+			//TIM3->ARR=10000-1;// When startup expired, tim 3 period update is for uart get data sample time, currently as 1s.
+			//TIM_ITConfig(TIM3,TIM_IT_Update,DISABLE);
+			//Toggle_PB10();
+	
 }
 
 //***************
-int TIM3_action_at_BEMF_zero_crossing(uint8_t Start_up){
+int TIM3_action_at_BEMF_zero_crossing(int Start_up){
 	static int One_Step_time=0;//save last one step time by using static variable
-	
+	static int pre_One_Step_time=0;
+	static int Duration_one_step=0;
 	TIM_Cmd(TIM3,DISABLE);
-		
+	/*	
+	if( Start_up==1){
 	One_Step_time= TIM_GetCounter(TIM3);
+	if( One_Step_time< pre_One_Step_time){
+		Duration_one_step= Start_up_change_step+One_Step_time-pre_One_Step_time;
+		}
+	if( One_Step_time > pre_One_Step_time)
+	Duration_one_step= One_Step_time-pre_One_Step_time;
+	pre_One_Step_time=One_Step_time;
+	}
+	
+	if( Start_up==0)
+	*/
+	Duration_one_step= TIM_GetCounter(TIM3);
 	TIM_SetCounter(TIM3,0);
-	if(Start_up==0)
-	TIM_SetCompare1(TIM3,One_Step_time/2);// this function leads to commutation continute to happen without sucessful zero crossing detect
+	//if(Start_up==0)
+	TIM_SetCompare1(TIM3,Duration_one_step/2);// this function leads to commutation continute to happen without sucessful zero crossing detect
 	
 	TIM_Cmd(TIM3,ENABLE);
-	return One_Step_time;
+	
+	return Duration_one_step;
 }
 
+void Timer14_sample_config(void){
+
+	/* TIM6 clock enable */
+		TIM_TimeBaseInitTypeDef TIM_TimeBaseInitial;
+		NVIC_InitTypeDef NVIC_Initial;
+		
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM14,ENABLE);
+	  TIM_TimeBaseInitial.TIM_Prescaler=(SystemCoreClock/TIM14_clock_start_up)-1; //timer6_clock=1kHz;
+		TIM_TimeBaseInitial.TIM_Period =Start_up_change_step;//first setting for motor startup, take 40 pulses (2ms vs 20kHz pwm) before changing to next step in startup phases
+	  
+	
+		TIM_TimeBaseInitial.TIM_CounterMode=TIM_CounterMode_Up;
+		TIM_TimeBaseInitial.TIM_ClockDivision=0;
+		TIM_TimeBaseInit(TIM14,&TIM_TimeBaseInitial);
+		////////////////Interrupt////////////////
+		NVIC_Initial.NVIC_IRQChannel = TIM14_IRQn;
+		NVIC_Initial.NVIC_IRQChannelPriority=4;
+		NVIC_Initial.NVIC_IRQChannelCmd=ENABLE;
+		NVIC_Init(&NVIC_Initial);
+		
+		TIM_ITConfig(TIM14,TIM_IT_Update,ENABLE);//lack compare interrupt. Should be configured after startup success
+		TIM_Cmd(TIM14,ENABLE);
+		
+}

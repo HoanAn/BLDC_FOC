@@ -1,6 +1,7 @@
 #include "DMA_control.h"
 void DMA_ADC_config(uint32_t Periph_Address, uint16_t* Mem_Address){
 	DMA_InitTypeDef   DMA_InitStructure;
+	NVIC_InitTypeDef  NVIC_InitStructure;
   /* DMA1 clock enable */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1 , ENABLE);
   
@@ -19,7 +20,16 @@ void DMA_ADC_config(uint32_t Periph_Address, uint16_t* Mem_Address){
   DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
   DMA_Init(DMA1_Channel1, &DMA_InitStructure);
   /* DMA1 Channel1 enable */
-  DMA_Cmd(DMA1_Channel1, ENABLE);
+	DMA_Cmd(DMA1_Channel1, ENABLE);
+	
+	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel1_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPriority = 0;//highest priority
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+
+  /* Transfer complete interrupt mask */
+  //DMA_ITConfig(DMA1_Channel2, DMA_IT_TC, ENABLE);
+	 DMA_ITConfig(DMA1_Channel1, DMA_IT_TC, ENABLE);
 }
 
 void DMA_UART1_config(uint8_t* TX_buff, uint8_t* RX_buff){
@@ -75,7 +85,7 @@ void DMA_UART1_config(uint8_t* TX_buff, uint8_t* RX_buff){
 	
 	/* Enable DMA Interrupt to the highest priority */
   NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel2_3_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPriority = 0;//highest priority
+  NVIC_InitStructure.NVIC_IRQChannelPriority = 1;//highest priority
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
 
